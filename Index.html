@@ -7,75 +7,44 @@
     <style>
         body {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #1e1e1e; /* Fond sombre */
-            color: #fff; /* Couleur du texte */
+            background-color: #f0f0f0;
         }
-        .pokeball {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(to bottom, #b22222 50%, white 50%); /* Rouge assombri */
-            border: 5px solid black;
-            border-radius: 50%;
-            position: relative;
-            margin-bottom: 20px; /* Espace au-dessous */
-            transition: transform 0.6s ease;
-        }
-        .pokeball::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            background: white;
-            border: 5px solid black;
-            border-radius: 50%;
-            z-index: 2;
-        }
-        .pokeball::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 15px;
-            height: 15px;
-            background: black;
-            border-radius: 50%;
-            z-index: 3;
+        .container {
+            display: flex;
+            gap: 20px; /* Espace entre les boutons */
         }
         .button {
-            padding: 20px 40px; /* Agrandit le bouton */
-            font-size: 20px;
-            font-family: 'Verdana', sans-serif;
+            padding: 15px 30px;
+            font-size: 18px;
             color: #fff;
-            background-color: #ffcb05;
-            border: 2px solid #3b4cca;
-            border-radius: 25px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
             text-align: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-            transition: 0.3s;
+            transition: background-color 0.3s;
         }
         .button:hover {
-            background-color: #3b4cca;
-            color: #ffcb05;
+            background-color: #0056b3;
         }
-        .button:hover + .pokeball {
-            transform: rotate(360deg); /* Animation de rotation */
+        .discord-button {
+            background-color: #5865F2; /* Couleur Discord */
+        }
+        .discord-button:hover {
+            background-color: #404EED; /* Couleur Discord survol */
         }
     </style>
 </head>
 <body>
-    <div class="pokeball"></div> <!-- Pokéball au-dessus -->
-    <a href="pokedexLive/main.html" class="button">Accéder au Pokédex</a>
+    <div class="container">
+        <a href="pokedexLive/main.html" class="button">Accéder au Pokédex</a>
+        <a href="https://discord.com" class="button discord-button">Accéder à Discord</a>
+    </div>
 </body>
 </html>
