@@ -18,6 +18,16 @@
             display: flex;
             gap: 20px; /* Espace entre les boutons */
         }
+        .discord-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .discord-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
         .button {
             padding: 15px 30px;
             font-size: 18px;
@@ -44,7 +54,10 @@
 <body>
     <div class="container">
         <a href="pokedexLive/main.html" class="button">Accéder au Pokédex</a>
-        <a href="https://discord.com" class="button discord-button">Accéder à Discord</a>
+        <div class="discord-container">
+            <img src="https://ibb.co/qY8fLXHm" alt="Logo Discord" class="discord-logo">
+            <a href="https://discord.gg/Jc8yNHwhrc" class="button discord-button">Accéder à Discord</a>
+        </div>
     </div>
 </body>
 </html>
