@@ -82,7 +82,7 @@
       </form>
     </nav><br><br>
     <h1>Pokédex MythMega - chez theflockers_</h1>
-    <p>Pokédex de MythMega [de twitch] au 2025-03-17_15-44-19, sur le stream de theflockers_.</p>
+    <p>Pokédex de MythMega [de twitch] au 2025-03-17_18-52-15, sur le stream de theflockers_.</p>
     <table class="table table-dark table-bordered table-striped">
         <thead class="thead-light">
             <tr>
@@ -97,9 +97,9 @@
         <tbody>
 <tr>
                 <td class="pokename">Bulbizarre</td>
-                <td><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/bulbasaur.gif" alt="Normal Sprite"></td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Bulbasaur_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
-                <td><img class = "all-black" src="https://img.pokemondb.net/sprites/black-white/anim/shiny/bulbasaur.gif" alt="Shiny Sprite"></td>
+                <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Bulbasaur_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>14/03/2025 20:50:02</td>
             </tr>
@@ -118,6 +118,30 @@
       border-radius: 10px;
       background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
     }
+    .img-badge {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .img-badge-common {filter: drop-shadow(0 0 10px white) drop-shadow(0 0 20px white);
+            }
+.img-badge-uncommon {filter: drop-shadow(0 0 10px green) drop-shadow(0 0 20px green);
+            }
+.img-badge-rare
+            {filter: drop-shadow(0 0 10px blue) drop-shadow(0 0 20px blue);
+}
+.img-badge-epic
+            {filter: drop-shadow(0 0 10px purple) drop-shadow(0 0 20px purple);
+            }
+.img-badge-legendary {filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow);
+}
+.img-badge-exotic {filter: drop-shadow(0 0 10px pink) drop-shadow(0 0 20px pink);
+}
+
+    .img-badge:hover {transform: scale(1.25) rotate(360deg);
+    }
+
     #downloadBtn {
       margin-top: 35px;
       font-size: large;
@@ -186,7 +210,7 @@
         <div class="col">
           <h6>Creature Favorite :</h6>
           <p></p>
-          <img src="" class="img-thumbnail" alt="userprofile fav creature" style="width: 128px;">
+          <img src="" alt="userprofile fav creature" style="width: 128px;">
         </div>
       </div>
     </div>
@@ -194,46 +218,28 @@
     <div class="container">
       <div class="row">
         
-<div class="col">
-          <img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" alt="Badge 1" style="height: 48px; width: 48px;">
-            <p style="font-size: 12px; margin-top: 4px">Red.</p>
-        </div>
-<div class="col">
-          <img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/mew.png" alt="Badge 2" style="height: 48px; width: 48px;">
-            <p style="font-size: 12px; margin-top: 4px">Agent Rocket.</p>
-        </div>
-<div class="col">
-          <img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" alt="Badge 3" style="height: 48px; width: 48px;">
-            <p style="font-size: 12px; margin-top: 4px">Oiseaux légendaires.</p>
-        </div>
-<div class="col">
-          <img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" alt="Badge 4" style="height: 48px; width: 48px;">
-            <p style="font-size: 12px; margin-top: 4px">Prédateur surpuissant.</p>
-        </div>
       </div>
     </div>
   </div>
 
   <button id="downloadBtn">Télécharger ma carte</button>
 </center>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script>
-    document.getElementById("downloadBtn").addEventListener("click", function(){
-      var cardElement = document.querySelector(".generatedCard");
-
-      html2canvas(cardElement, { useCORS: true }).then(canvas => {
-        var imageData = canvas.toDataURL("image/png");
-        var downloadLink = document.createElement("a");
-        downloadLink.href = imageData;
-        downloadLink.download = "ma-carte.png";
-        document.body.appendChild(downloadLink);
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+<script>
+  document.getElementById("downloadBtn").addEventListener("click", function(){
+    var cardElement = document.querySelector(".generatedCard");
+    domtoimage.toPng(cardElement)
+      .then(function(dataUrl){
+        var downloadLink = document.createElement('a');
+        downloadLink.href = dataUrl;
+        downloadLink.download = 'ma-carte.png';
         downloadLink.click();
-        document.body.removeChild(downloadLink);
-      }).catch(err => {
-        console.error("Erreur lors de la génération de l'image :", err);
+      })
+      .catch(function(error) {
+        console.error("Une erreur est survenue :", error);
       });
-    });
-  </script>
+  });
+</script>
 
 <br><br>
 <p>Stats :</p><br>
@@ -243,10 +249,10 @@
   <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
 </div><br><p>Total argent dépensé : 100</p><p>Total de ball lancées : 2</p><br><p>Nombre de pokémon non shiny capturé : 1</p><p>Nombre de pokémon shiny capturé : 0</p><p>Total de pokémon attrapé : 1</p><p>Pokémon le plus attrapé : </p><p>Dresseur depuis : 14/03/2025 20:50:02 (depuis 2 jours.)</p>
 <p>Badges :</p><br>
-<p>Level 1</p><br><p>7 XP/250 XP</p><br><p>7 XP Totale</p><br><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Global [0/30]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Envoyer des balls ! [0/4]</b></h4>   <div class="row">
+<p>Level 1</p><br><p>7 XP/250 XP</p><br><p>7 XP Totale</p><br><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Global [0/32]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Envoyer des balls ! [0/4]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://s3.pokeos.com/forgotten-dex/pokeball/poke.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/poke.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tuto capture.</h5>
                                     <p class="card-text">???? [+50XP]</p>
@@ -255,7 +261,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://s3.pokeos.com/forgotten-dex/pokeball/great.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/great.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Ball à zéro.</h5>
                                     <p class="card-text">???? [+100XP]</p>
@@ -264,7 +270,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://s3.pokeos.com/forgotten-dex/pokeball/ultra.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/ultra.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">ball-ognaise.</h5>
                                     <p class="card-text">???? [+200XP]</p>
@@ -273,7 +279,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card epic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://s3.pokeos.com/forgotten-dex/pokeball/master.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/master.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">punching-ball.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -282,7 +288,7 @@
                             </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Attrapez les tous ! [0/5]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/love.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Dresseur débutant.</h5>
                                     <p class="card-text">???? [+50XP]</p>
@@ -291,7 +297,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/nest.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Dresseur aguerri.</h5>
                                     <p class="card-text">???? [+100XP]</p>
@@ -300,7 +306,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/timer.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Top-Dresseur.</h5>
                                     <p class="card-text">???? [+200XP]</p>
@@ -309,7 +315,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card epic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/heavy.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Dresseur légendaire.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -318,16 +324,16 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/luxury.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Dresseur divin.</h5>
                                     <p class="card-text">???? [+1000XP]</p>
                                   </div>
                                 </div>
-                            </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Shiny Hunting [0/3]</b></h4>   <div class="row">
+                            </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Shiny Hunting [0/5]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/giant-stone.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">La brillance.</h5>
                                     <p class="card-text">???? [+10XP]</p>
@@ -336,7 +342,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/dynamax.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Disco-ball.</h5>
                                     <p class="card-text">???? [+50XP]</p>
@@ -345,16 +351,34 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card epic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/gold.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
-                                    <h5 class="card-title">Disco-ball.</h5>
+                                    <h5 class="card-title">étoile filante.</h5>
                                     <p class="card-text">???? [+100XP]</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
+                                <div class="card epic" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/crystal.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Force cosmique.</h5>
+                                    <p class="card-text">???? [+250XP]</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
+                                <div class="card epic" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/ancient-roy-ball.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Supernova.</h5>
+                                    <p class="card-text">???? [+1000XP]</p>
                                   </div>
                                 </div>
                             </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Experience as Trainer [0/4]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/4796216f7c25efd7915233abdb4839e5-removebg-preview.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Regis.</h5>
                                     <p class="card-text">???? [+100XP]</p>
@@ -363,7 +387,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/blue_by_OrangeWaker.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Blue.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -372,7 +396,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card epic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/dB8kv_2ZGu4nI0MBXQBAB9C7uCMUi0rkDPwgZRSHqZo.webp" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Sacha.</h5>
                                     <p class="card-text">???? [+750XP]</p>
@@ -381,7 +405,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card exotic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/red.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Red.</h5>
                                     <p class="card-text">???? [+1510XP]</p>
@@ -417,7 +441,7 @@
                             </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Raid Vaincu [0/5]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/raid-Go-badge/level1.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Attaquant de passage.</h5>
                                     <p class="card-text">???? [+100XP]</p>
@@ -426,7 +450,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/raid-Go-badge/bronze.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Attaquant régulier.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -435,7 +459,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/raid-Go-badge/silver.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Casseur de bouche.</h5>
                                     <p class="card-text">???? [+2500XP]</p>
@@ -444,7 +468,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/raid-Go-badge/gold.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Chasseur terrifiant.</h5>
                                     <p class="card-text">???? [+5000XP]</p>
@@ -453,7 +477,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card exotic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/raid-Go-badge/diamond.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Prédateur surpuissant.</h5>
                                     <p class="card-text">???? [+10000XP]</p>
@@ -462,7 +486,7 @@
                             </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Raid Dmg [0/6]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/attack-go-badge/level1.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tireur débutant.</h5>
                                     <p class="card-text">???? [+50XP]</p>
@@ -471,7 +495,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/attack-go-badge/level2.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tireur habitué.</h5>
                                     <p class="card-text">???? [+200XP]</p>
@@ -480,7 +504,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/attack-go-badge/level3.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tireur chevroné.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -489,7 +513,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card epic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/attack-go-badge/level4.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tireur expert.</h5>
                                     <p class="card-text">???? [+5000XP]</p>
@@ -498,7 +522,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/attack-go-badge/level5.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tireur légendaire.</h5>
                                     <p class="card-text">???? [+20000XP]</p>
@@ -506,8 +530,8 @@
                                 </div>
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
-                                <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                <div class="card exotic" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/attack-go-badge/level6.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Tireur légendaire.</h5>
                                     <p class="card-text">???? [+25000XP]</p>
@@ -516,7 +540,7 @@
                             </div>   </div></div><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Kanto [0/5]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Dex Of Kanto [0/2]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/region/kanto_lucas-zero.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Starters 1G.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -525,7 +549,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/celadon-1g.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Casino de Céladopole.</h5>
                                     <p class="card-text">???? [+350XP]</p>
@@ -534,7 +558,7 @@
                             </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Legends Of Kanto [0/3]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card exotic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/mew.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/ptcgp/ptcgp_MEW.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Agent Rocket.</h5>
                                     <p class="card-text">???? [+500XP]</p>
@@ -543,7 +567,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/mewtwo.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/ptcgp/ptcgp_MEWTWO.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Soldat Rocket.</h5>
                                     <p class="card-text">???? [+750XP]</p>
@@ -552,7 +576,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card exotic" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/ptcgp/ptcgp_FIRE_THUNDER_FREEZER.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Oiseaux légendaires.</h5>
                                     <p class="card-text">???? [+1000XP]</p>
@@ -561,7 +585,7 @@
                             </div>   </div></div><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Johto [0/5]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Dex Of Johto [0/2]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card uncommon" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://static.wikia.nocookie.net/pokemonfanon/images/e/e8/Johto_Tournament_logo.png/revision/latest?cb=20210805124337" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Starters 2G..</h5>
                                     <p class="card-text">???? [+1000XP]</p>
@@ -570,7 +594,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card rare" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/celadon-2g.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Casino de Doublonville.</h5>
                                     <p class="card-text">???? [+350XP]</p>
@@ -579,7 +603,7 @@
                             </div>   </div>  <br><br><h4 class="col-12" style="margin-top:15px"><b>Legends Of Johto [0/3]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/1998/1998627.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Trio de chiens légendaires.</h5>
                                     <p class="card-text">???? [+700XP]</p>
@@ -588,7 +612,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/1092/1092446.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Ciel de Johto.</h5>
                                     <p class="card-text">???? [+1000XP]</p>
@@ -597,7 +621,7 @@
                             </div>
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card legendary" style="background-color: #222222;  height: 220px;">
-                                  <center><br><img src="https://cdn-icons-png.flaticon.com/512/8348/8348232.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/ptcgp/ptcgp_CELEBI.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Maitre du temps.</h5>
                                     <p class="card-text">???? [+1000XP]</p>
