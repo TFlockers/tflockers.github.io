@@ -16,7 +16,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             font-family: Arial, sans-serif;
@@ -24,10 +24,26 @@
             color: #fff;
         }
 
-        h1 {
-            font-family: 'PokemonFont', Arial, sans-serif;
-            font-size: 2rem; /* Taille réduite */
-            margin-bottom: 20px;
+        .title-image {
+            margin-top: 20px;
+            width: 300px; /* Ajuste la largeur selon tes besoins */
+            height: auto;
+        }
+
+        .buttons-container {
+            margin-top: 30px; /* Espacement entre le titre et les boutons */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 50px; /* Espacement entre les deux boutons */
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .pokeball {
@@ -39,7 +55,7 @@
             border-radius: 50%;
             cursor: pointer;
             overflow: hidden;
-            transition: transform 0.5s ease; /* Animation de rotation */
+            transition: transform 0.5s ease;
         }
 
         .pokeball::before {
@@ -51,7 +67,10 @@
             height: 50%;
             background: #8b0000; /* Rouge foncé */
             border-bottom: 3px solid #000;
-            z-index: 1;
+        }
+
+        .pokeball:hover {
+            transform: rotate(360deg); /* Effet de rotation pour la Pokéball */
         }
 
         .center-button {
@@ -64,20 +83,64 @@
             background: #fff;
             border: 5px solid #000;
             border-radius: 50%;
-            z-index: 2;
         }
 
-        .pokeball:hover {
-            transform: rotate(360deg); /* Effet de rotation complète */
+        .discord-button {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            border: 6px solid #000; /* Même bordure noire */
+            border-radius: 50%; /* Bouton rond */
+            cursor: pointer;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .discord-button img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; /* Rendre l'image ronde */
+        }
+
+        .discord-button:hover {
+            animation: shake 0.3s infinite; /* Animation de tremblement */
+            box-shadow: 0 0 15px #5865F2; /* Effet de lueur */
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, -2px); }
+            100% { transform: translate(2px, 2px); }
+        }
+
+        .label {
+            margin-bottom: 10px;
+            font-size: 2rem; /* Taille identique pour les deux textes */
         }
     </style>
 </head>
 <body>
-    <h1>StreamDex</h1>
-    <a href="pokedexLive/main.html">
-        <div class="pokeball">
-            <div class="center-button"></div>
+    <img src="path/to/title-image.png" alt="Titre" class="title-image">
+    <div class="buttons-container">
+        <div class="button-group">
+            <p class="label">StreamDex</p>
+            <a href="pokedexLive/main.html">
+                <div class="pokeball">
+                    <div class="center-button"></div>
+                </div>
+            </a>
         </div>
-    </a>
+        <div class="button-group">
+            <p class="label">Discord</p>
+            <a href="https://discord.gg/Jc8yNHwhrc">
+                <div class="discord-button">
+                    <img src="C:\Users\TheFlockers\Pictures\didi.png" alt="Logo Discord">
+                </div>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
