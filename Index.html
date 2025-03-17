@@ -3,61 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>StreamDex</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        .container {
-            display: flex;
-            gap: 20px; /* Espace entre les boutons */
-        }
-        .discord-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .discord-logo {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-        .button {
-            padding: 15px 30px;
-            font-size: 18px;
             color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
             text-align: center;
-            transition: background-color 0.3s;
         }
-        .button:hover {
-            background-color: #0056b3;
+        h1 {
+            margin-bottom: 20px;
+            font-size: 3rem;
         }
-        .discord-button {
-            background-color: #5865F2; /* Couleur Discord */
+        .pokeball-button {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border: 5px solid #000;
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
         }
-        .discord-button:hover {
-            background-color: #404EED; /* Couleur Discord survol */
+        .pokeball-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: red;
+            border-bottom: 2px solid #000;
+        }
+        .pokeball-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .pokeball-button:hover::after {
+            background: red;
+            transition: background-color 0.3s ease;
+        }
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="pokedexLive/main.html" class="button">Accéder au Pokédex</a>
-        <div class="discord-container">
-            <img src="https://ibb.co/qY8fLXHm" alt="Logo Discord" class="discord-logo">
-            <a href="https://discord.gg/Jc8yNHwhrc" class="button discord-button">Accéder à Discord</a>
-        </div>
+    <div>
+        <h1>StreamDex</h1>
+        <a href="pokedexLive/main.html">
+            <div class="pokeball-button"></div>
+        </a>
     </div>
 </body>
 </html>
