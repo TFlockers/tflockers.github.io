@@ -72,14 +72,22 @@
     <nav class="navbar navbar-dark bg-dark" style="justify-content: center; background-color: #2a2a2a;">
       <form class="form-inline">
         <a class="btn btn-sm btn-outline-secondary" href="../main.html" style="color: white;">Accueil Pokédex</a>
-        <a class="btn btn-sm btn-outline-secondary" href="commandgenerator.html" style="color: white;">Command Generator</a>
-        <a class="btn btn-sm btn-outline-secondary" href="raid.html" style="color: white;">Raid Result</a>
+        <a class="btn btn-sm btn-outline-secondary" href="../commandgenerator.html" style="color: white;">Command Generator</a>
+        <a class="btn btn-sm btn-outline-secondary" href="../raid.html" style="color: white;">Raid Result</a>
         <a class="btn btn-sm btn-outline-secondary" href="../availablepokemon.html" style="color: white;">Pokédex Infos</a>
         <a class="btn btn-sm btn-outline-secondary" href="../pokestats.html" style="color: white;">Classements</a>
+        <a class="btn btn-sm btn-outline-secondary" href="../records.html" style="color: white;">Enregistrements</a>
       </form>
     </nav><br><br>
     <h1>Pokédex Skripix_ - chez theflockers_</h1>
-    <p>Pokédex de Skripix_ [de twitch] au 2025-03-26_22-41-29, sur le stream de theflockers_.</p>
+    <p>Pokédex de Skripix_ [de twitch] au 2025-03-27_15-49-28, sur le stream de theflockers_.</p>
+
+  <div class="d-flex align-items-center" style="max-width: 480px;">
+    <!-- Input recherche avec max-width -->
+    <input type="text" id="searchInput" placeholder="Rechercher Pokémon ou Statut" class="form-control" style="margin-bottom: 20px; max-width: 300px;">
+    <!-- Compteur -->
+    <span id="rowCount" style="margin-left: 10px; font-size: 16px;">0 résultat(s)</span>
+  </div>
     <table class="table table-dark table-bordered table-striped">
         <thead class="thead-light">
             <tr>
@@ -89,9 +97,10 @@
                 <th>Sprite Shiny</th>
                 <th>Capturé(s)</th>
                 <th>Première capture(s)</th>
+                <th class="d-none">Tag</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="recordsTable">
 <tr>
                 <td class="pokename">Bulbizarre</td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Bulbasaur_normal.gif" alt="Normal Sprite"></td>
@@ -99,6 +108,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Bulbasaur_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:51</td>
+                <td class="d-none">grass ; plante ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -108,6 +118,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Charizard_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">2</td>
                 <td>17/03/2025 14:25:20</td>
+                <td class="d-none">fire ; feu ; flying ; vol ; main</td>
             </tr>
 
 <tr>
@@ -117,6 +128,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Wartortle_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:07</td>
+                <td class="d-none">water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -126,6 +138,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Caterpie_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:35</td>
+                <td class="d-none">bug ; bug ; main</td>
             </tr>
 
 <tr>
@@ -135,6 +148,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pidgey_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:25</td>
+                <td class="d-none">normal ; normal ; flying ; vol ; main</td>
             </tr>
 
 <tr>
@@ -144,6 +158,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Raticate_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:23:27</td>
+                <td class="d-none">normal ; normal ; main</td>
             </tr>
 
 <tr>
@@ -153,6 +168,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Raichu_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:51</td>
+                <td class="d-none">electric ; elektrik ; main</td>
             </tr>
 
 <tr>
@@ -162,6 +178,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Sandslash_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:30</td>
+                <td class="d-none">ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -171,6 +188,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Nidoqueen_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:25:17</td>
+                <td class="d-none">poison ; poison ; ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -180,6 +198,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Clefairy_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:03</td>
+                <td class="d-none">fairy ; fée ; main</td>
             </tr>
 
 <tr>
@@ -189,6 +208,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Clefable_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:28:02</td>
+                <td class="d-none">fairy ; fée ; main</td>
             </tr>
 
 <tr>
@@ -198,6 +218,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Vulpix_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:21:34</td>
+                <td class="d-none">fire ; feu ; main</td>
             </tr>
 
 <tr>
@@ -207,6 +228,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gloom_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:36</td>
+                <td class="d-none">grass ; plante ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -216,6 +238,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Paras_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:09</td>
+                <td class="d-none">bug ; bug ; grass ; plante ; main</td>
             </tr>
 
 <tr>
@@ -225,6 +248,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Parasect_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:20:41</td>
+                <td class="d-none">bug ; bug ; grass ; plante ; main</td>
             </tr>
 
 <tr>
@@ -234,6 +258,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Dugtrio_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:51</td>
+                <td class="d-none">ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -243,6 +268,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Golduck_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:59</td>
+                <td class="d-none">water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -252,6 +278,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mankey_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:23:30</td>
+                <td class="d-none">fighting ; combat ; main</td>
             </tr>
 
 <tr>
@@ -261,6 +288,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Primeape_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:14</td>
+                <td class="d-none">fighting ; combat ; main</td>
             </tr>
 
 <tr>
@@ -270,6 +298,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Growlithe_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:21:26</td>
+                <td class="d-none">fire ; feu ; main</td>
             </tr>
 
 <tr>
@@ -279,6 +308,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Abra_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:05</td>
+                <td class="d-none">psychic ; psy ; main</td>
             </tr>
 
 <tr>
@@ -288,6 +318,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kadabra_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:47</td>
+                <td class="d-none">psychic ; psy ; main</td>
             </tr>
 
 <tr>
@@ -297,6 +328,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Machamp_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:37</td>
+                <td class="d-none">fighting ; combat ; main</td>
             </tr>
 
 <tr>
@@ -306,6 +338,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Bellsprout_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>18/03/2025 15:27:32</td>
+                <td class="d-none">grass ; plante ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -315,6 +348,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Weepinbell_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:39</td>
+                <td class="d-none">grass ; plante ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -324,6 +358,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Victreebel_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:23:22</td>
+                <td class="d-none">grass ; plante ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -333,6 +368,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Geodude_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:23:35</td>
+                <td class="d-none">rock ; roche ; ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -342,6 +378,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Graveler_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:27</td>
+                <td class="d-none">rock ; roche ; ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -351,6 +388,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ponyta_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:20</td>
+                <td class="d-none">fire ; feu ; main</td>
             </tr>
 
 <tr>
@@ -360,6 +398,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Slowbro_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:08</td>
+                <td class="d-none">water ; eau ; psychic ; psy ; main</td>
             </tr>
 
 <tr>
@@ -369,6 +408,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magneton_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:00</td>
+                <td class="d-none">electric ; elektrik ; steel ; acier ; main</td>
             </tr>
 
 <tr>
@@ -378,6 +418,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Dewgong_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:20:54</td>
+                <td class="d-none">water ; eau ; ice ; glace ; main</td>
             </tr>
 
 <tr>
@@ -387,6 +428,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Shellder_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:42</td>
+                <td class="d-none">water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -396,6 +438,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Haunter_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:46</td>
+                <td class="d-none">ghost ; spectre ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -405,6 +448,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gengar_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:56</td>
+                <td class="d-none">ghost ; spectre ; poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -414,6 +458,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Onix_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:32</td>
+                <td class="d-none">rock ; roche ; ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -423,6 +468,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Drowzee_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:49</td>
+                <td class="d-none">psychic ; psy ; main</td>
             </tr>
 
 <tr>
@@ -432,6 +478,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kingler_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:45</td>
+                <td class="d-none">water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -441,6 +488,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Electrode_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:24</td>
+                <td class="d-none">electric ; elektrik ; main</td>
             </tr>
 
 <tr>
@@ -450,6 +498,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Marowak_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:59</td>
+                <td class="d-none">ground ; sol ; main</td>
             </tr>
 
 <tr>
@@ -459,6 +508,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Koffing_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:43</td>
+                <td class="d-none">poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -468,6 +518,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Weezing_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>17/03/2025 14:23:53</td>
+                <td class="d-none">poison ; poison ; main</td>
             </tr>
 
 <tr>
@@ -477,6 +528,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Rhyhorn_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:34</td>
+                <td class="d-none">ground ; sol ; rock ; roche ; main</td>
             </tr>
 
 <tr>
@@ -486,6 +538,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tangela_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:24:20</td>
+                <td class="d-none">grass ; plante ; main</td>
             </tr>
 
 <tr>
@@ -495,6 +548,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kangaskhan_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:44</td>
+                <td class="d-none">normal ; normal ; main</td>
             </tr>
 
 <tr>
@@ -504,6 +558,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Staryu_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:58</td>
+                <td class="d-none">water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -513,6 +568,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magmar_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:21:37</td>
+                <td class="d-none">fire ; feu ; main</td>
             </tr>
 
 <tr>
@@ -522,6 +578,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pinsir_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:23:57</td>
+                <td class="d-none">bug ; bug ; main</td>
             </tr>
 
 <tr>
@@ -531,6 +588,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magikarp_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>18/03/2025 15:27:41</td>
+                <td class="d-none">water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -540,6 +598,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gyarados_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:17</td>
+                <td class="d-none">water ; eau ; flying ; vol ; main</td>
             </tr>
 
 <tr>
@@ -549,6 +608,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Lapras_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:21</td>
+                <td class="d-none">water ; eau ; ice ; glace ; main</td>
             </tr>
 
 <tr>
@@ -558,6 +618,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Eevee_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:23:41</td>
+                <td class="d-none">normal ; normal ; main</td>
             </tr>
 
 <tr>
@@ -567,6 +628,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Jolteon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:25:05</td>
+                <td class="d-none">electric ; elektrik ; main</td>
             </tr>
 
 <tr>
@@ -576,6 +638,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Flareon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:20:29</td>
+                <td class="d-none">fire ; feu ; main</td>
             </tr>
 
 <tr>
@@ -585,6 +648,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Omanyte_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:25:09</td>
+                <td class="d-none">rock ; roche ; water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -594,6 +658,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kabuto_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:26:54</td>
+                <td class="d-none">rock ; roche ; water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -603,6 +668,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kabutops_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:02</td>
+                <td class="d-none">rock ; roche ; water ; eau ; main</td>
             </tr>
 
 <tr>
@@ -612,6 +678,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Aerodactyl_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>18/03/2025 15:27:21</td>
+                <td class="d-none">rock ; roche ; flying ; vol ; main</td>
             </tr>
 
 <tr>
@@ -621,6 +688,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Dratini_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:22:04</td>
+                <td class="d-none">dragon ; dragon ; main</td>
             </tr>
 
 <tr>
@@ -630,6 +698,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Dragonair_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:21:50</td>
+                <td class="d-none">dragon ; dragon ; main</td>
             </tr>
 
 <tr>
@@ -639,6 +708,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mewtwo_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>17/03/2025 14:20:57</td>
+                <td class="d-none">légendaire legendaire legendary ; psychic ; psy ; main</td>
             </tr>
 </tbody>
     </table>
@@ -852,9 +922,9 @@ font-weight: bolder;
   <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
 </div><p>Nombre d'espèce shiny enregistrée : 4</p><div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2%</div>
-</div><br><p>Total argent dépensé : 21862</p><p>Total de ball lancées : 102</p><br><p>Nombre de pokémon non shiny capturé : 84</p><p>Nombre de pokémon shiny capturé : 2</p><p>Total de pokémon attrapé : 86</p><p>Pokémon le plus attrapé : dracaufeu#s</p><p>Dresseur depuis : 17/03/2025 14:20:29 (depuis 9 jours.)</p>
+</div><br><p>Total argent dépensé : 21862</p><p>Total de ball lancées : 102</p><br><p>Nombre de pokémon non shiny capturé : 84</p><p>Nombre de pokémon shiny capturé : 2</p><p>Total de pokémon attrapé : 86</p><p>Pokémon le plus attrapé : dracaufeu#s</p><p>Dresseur depuis : 17/03/2025 14:20:29 (depuis 10 jours.)</p>
 <p>Badges :</p><br>
-<p>Level 4</p><br><p>437 XP/487 XP</p><br><p>1389 XP Totale</p><br><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Global [6/32]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Envoyer des balls ! [2/4]</b></h4>   <div class="row">
+<p>Level 4</p><br><p>439 XP/487 XP</p><br><p>1391 XP Totale</p><br><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Global [6/32]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Envoyer des balls ! [2/4]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
                                   <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/poke.png" class="card-img-top trophy-True" alt="..." style="height: 96px; width: auto;"></center>
@@ -1233,6 +1303,49 @@ font-weight: bolder;
                                   </div>
                                 </div>
                             </div>   </div></div>
+
+   <script>
+  // Fonction qui normalise le texte en supprimant les accents et en le convertissant en minuscules
+  function normalizeText(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
+  function filterTable() {
+    // Récupère et normalise le texte de recherche
+    const searchValue = normalizeText(document.getElementById('searchInput').value);
+    // Découpe la recherche en tokens en éliminant les espaces inutiles
+    const tokens = searchValue.split(' ').filter(token => token.trim() !== '');
+    const tableRows = document.querySelectorAll('#recordsTable tr');
+    let visibleCount = 0;
+
+    tableRows.forEach(row => {
+      // Extraction et normalisation des contenus des colonnes recherchées
+      const pokemon = normalizeText(row.cells[0].textContent);
+      const tags = normalizeText(row.cells[6].textContent);
+
+      // Chaque token doit se retrouver dans au moins l'un des champs (condition AND)
+      const isMatch = tokens.every(token =>
+        pokemon.includes(token) || tags.includes(token)
+      );
+
+      if (isMatch || tokens.length === 0) {
+        row.style.display = '';
+        visibleCount++;
+      } else {
+        row.style.display = 'none';
+      }
+    });
+
+    document.getElementById('rowCount').textContent = visibleCount + " résultat(s)";
+  }
+
+  // Ajoute l'événement keyup pour lancer le filtrage à la saisie
+  document.getElementById('searchInput').addEventListener('keyup', filterTable);
+
+  // Mise à jour du filtrage dès le chargement de la page
+  document.addEventListener('DOMContentLoaded', filterTable);
+</script>
+
     <!-- Bootstrap JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
