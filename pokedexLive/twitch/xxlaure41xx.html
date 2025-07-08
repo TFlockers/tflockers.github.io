@@ -8,12 +8,36 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+                body {
             background-color: #2a2a2a;
             color: #ffffff;
             padding: 20px;
         }
-        .pokename {
+        .table tbody td img {
+            height: 64px;
+            width: auto;
+        }
+        .NotAvailable {
+            color: #2fa432;
+        }
+        .AvailableForGiveaway {
+            color: #c1a518;
+        }
+        .NotAvailable {
+            color: #ad1e1e;
+        }
+        .count {font-size: 30px;
+        }
+        /* Noir et blanc */
+        .black-and-white {filter: grayscale(100%);
+          -webkit-filter: grayscale(100%);
+        }
+
+        /* Tout noir (seulement la forme) */
+        .all-black {filter: brightness(0%);
+          -webkit-filter: brightness(0%);
+        }
+.pokename {
         font-size: 30px;
         }
         .table tbody td img {
@@ -66,21 +90,160 @@
 
         th, td { text-align: center; border: 1px solid black; padding: 10px; }
 
+        /* Texte plus grand dans <td> */
+        .large-text td {font - size: 20px; }
+
+        /* Bannière zoomée pour l'image de la zone */
+        .zone-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .sprite-container {
+            height: 256px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        h5 {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+        }
+        .icon {
+            max-height: 16px;
+            width: auto;
+        }
+        .sprite-container img {
+            width: 100%;
+            height: auto;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+        }
+        .card {
+            border: 2px solid #d4af37;
+            background-color: #212529;
+            text-align: center;
+        margin-bottom: 20px;
+        }
+        /* Style pour les cartes de pokémon exclusifs : effet doré */
+        .card-exclusive {
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 10px #ffd700;
+            background-color: #212529;
+            text-align: center;
+        margin-bottom: 20px;
+        }
+        /* Style pour les cartes de pokémon exclusifs : effet doré */
+        .card-common {
+            border: 2px solid #000000;
+            box-shadow: 0 0 5px #000000;
+            background-color: #212529;
+            text-align: center;
+        margin-bottom: 20px;
+        }
+        /* Style pour les cartes de pokémon dispo partout : effet blanc */
+        .card-not-everywhere {
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 5px #ccc;
+            background-color: #212529;
+            text-align: center;
+        margin-bottom: 20px;
+        }
+        /* Style pour les cartes de pokémon légendaires : effet inner shadow multicolore */
+        .card-legendary {
+            border: 2px solid #e0e0ff;
+            background: radial-gradient(circle at center, #121212, #e0e0ff);
+            box-shadow: inset 0 0 20px red, inset 0 0 40px blue, inset 0 0 60px green;
+            text-align: center;
+        margin-bottom: 20px;
+        }
+        .col{
+        margin-bottom: 20px;
+        }
+        .progress-bar-twitch {
+            background-color: #6441A5;
+        }
+        .progress-bar-youtube {
+            background-color: #FF0000;
+        }
+        .progress-bar-tiktok {
+            background-color: #E4E4E4;
+        }
+        .progress-bar span {
+            text-align: center;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark" style="justify-content: center; background-color: #2a2a2a;">
-      <form class="form-inline">
-        <a class="btn btn-sm btn-outline-secondary" href="../main.html" style="color: white;">Accueil Pokédex</a>
-        <a class="btn btn-sm btn-outline-secondary" href="../commandgenerator.html" style="color: white;">Command Generator</a>
-        <a class="btn btn-sm btn-outline-secondary" href="../raid.html" style="color: white;">Raid Result</a>
-        <a class="btn btn-sm btn-outline-secondary" href="../availablepokemon.html" style="color: white;">Pokédex Infos</a>
-        <a class="btn btn-sm btn-outline-secondary" href="../pokestats.html" style="color: white;">Classements</a>
-        <a class="btn btn-sm btn-outline-secondary" href="../records.html" style="color: white;">Enregistrements</a>
-      </form>
-    </nav><br><br>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #2a2a2a;">
+        <a class="navbar-brand" href="../main.html">Pokémon Tracker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../main.html">Accueil Pokédex</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../commandgenerator.html">Command Generator</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="statsDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Stats
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="statsDropdown">
+                        <a class="dropdown-item" href="../raid.html">Raid Résultats</a>
+                        <a class="dropdown-item" href="../pokestats.html">Classements</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../availablepokemon.html">Pokédex Infos</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="scrapBuyDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Scrap/Buy
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="scrapBuyDropdown">
+                        <a class="dropdown-item" href="../buypokemon.html">Acheter Pokémon</a>
+                        <a class="dropdown-item" href="../scrappokemon.html">Scrap Pokémon</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../records.html">Enregistrements</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <br><br>
+
     <h1>Pokédex XxLaure41xX - chez theflockers_</h1>
-    <p>Pokédex de XxLaure41xX [de twitch] au 2025-07-07_15-07-52, sur le stream de theflockers_.</p>
+    <p>Pokédex de XxLaure41xX [de twitch] au 2025-07-09_00-20-16</p>
 
   <div class="d-flex align-items-center" style="max-width: 480px;">
     <!-- Input recherche avec max-width -->
@@ -102,613 +265,613 @@
         </thead>
         <tbody id="recordsTable">
 <tr>
-                <td class="pokename">Florizarre</td>
+                <td class="pokename"><a href="../Creature/Florizarre.html">Florizarre</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Venusaur_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Venusaur_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:06:31</td>
-                <td class="d-none">grass ; plante ; poison ; poison ; Kanto</td>
+                <td class="d-none">rare ; grass ; plante ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Reptincel</td>
+                <td class="pokename"><a href="../Creature/Reptincel.html">Reptincel</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Charmeleon_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Charmeleon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:31:08</td>
-                <td class="d-none">fire ; feu ; Kanto</td>
+                <td class="d-none">rare ; fire ; feu ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Carapuce</td>
+                <td class="pokename"><a href="../Creature/Carapuce.html">Carapuce</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Squirtle_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Squirtle_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:32:29</td>
-                <td class="d-none">water ; eau ; Kanto</td>
+                <td class="d-none">rare ; water ; eau ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Tortank</td>
+                <td class="pokename"><a href="../Creature/Tortank.html">Tortank</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Blastoise_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Blastoise_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:18:43</td>
-                <td class="d-none">water ; eau ; Kanto</td>
+                <td class="d-none">rare ; water ; eau ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Papilusion</td>
+                <td class="pokename"><a href="../Creature/Papilusion.html">Papilusion</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Butterfree_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Butterfree_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:06:13</td>
-                <td class="d-none">bug ; insecte ; flying ; vol ; Kanto</td>
+                <td class="d-none">common ; commun ; bug ; bug ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Roucoups</td>
+                <td class="pokename"><a href="../Creature/Roucoups.html">Roucoups</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pidgeotto_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pidgeotto_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:02:59</td>
-                <td class="d-none">normal ; normal ; flying ; vol ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Abo</td>
+                <td class="pokename"><a href="../Creature/Abo.html">Abo</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ekans_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ekans_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:27:48</td>
-                <td class="d-none">poison ; poison ; Kanto</td>
+                <td class="d-none">common ; commun ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Raichu</td>
+                <td class="pokename"><a href="../Creature/Raichu.html">Raichu</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Raichu_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Raichu_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:30:35</td>
-                <td class="d-none">electric ; elektrik ; Kanto</td>
+                <td class="d-none">common ; commun ; electric ; elektrik ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Sablaireau</td>
+                <td class="pokename"><a href="../Creature/Sablaireau.html">Sablaireau</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Sandslash_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Sandslash_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>29/05/2025 15:29:51</td>
-                <td class="d-none">ground ; sol ; Kanto</td>
+                <td class="d-none">common ; commun ; ground ; sol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Nidoran♂</td>
+                <td class="pokename"><a href="../Creature/Nidoran♂.html">Nidoran♂</a></td>
                 <td><img src="https://img.pokemondb.net/sprites/black-white/anim/normal/nidoran-m.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://img.pokemondb.net/sprites/black-white/anim/shiny/nidoran-m.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:27:42</td>
-                <td class="d-none">poison ; poison ; Kanto</td>
+                <td class="d-none">common ; commun ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Nidoking</td>
+                <td class="pokename"><a href="../Creature/Nidoking.html">Nidoking</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Nidoking_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Nidoking_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:46:29</td>
-                <td class="d-none">poison ; poison ; ground ; sol ; Kanto</td>
+                <td class="d-none">common ; commun ; poison ; poison ; ground ; sol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Goupix</td>
+                <td class="pokename"><a href="../Creature/Goupix.html">Goupix</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Vulpix_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Vulpix_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:33:38</td>
-                <td class="d-none">fire ; feu ; Kanto</td>
+                <td class="d-none">common ; commun ; fire ; feu ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Feunard</td>
+                <td class="pokename"><a href="../Creature/Feunard.html">Feunard</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ninetales_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ninetales_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:32:52</td>
-                <td class="d-none">fire ; feu ; Kanto</td>
+                <td class="d-none">common ; commun ; fire ; feu ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Ortide</td>
+                <td class="pokename"><a href="../Creature/Ortide.html">Ortide</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gloom_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gloom_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:07:09</td>
-                <td class="d-none">grass ; plante ; poison ; poison ; Kanto</td>
+                <td class="d-none">common ; commun ; grass ; plante ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Paras</td>
+                <td class="pokename"><a href="../Creature/Paras.html">Paras</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Paras_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Paras_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:31:42</td>
-                <td class="d-none">bug ; insecte ; grass ; plante ; Kanto</td>
+                <td class="d-none">common ; commun ; bug ; bug ; grass ; plante ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Aéromite</td>
+                <td class="pokename"><a href="../Creature/Aéromite.html">Aéromite</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Venomoth_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Venomoth_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:32:17</td>
-                <td class="d-none">bug ; insecte ; poison ; poison ; Kanto</td>
+                <td class="d-none">common ; commun ; bug ; bug ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Taupiqueur</td>
+                <td class="pokename"><a href="../Creature/Taupiqueur.html">Taupiqueur</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Diglett_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Diglett_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:03:51</td>
-                <td class="d-none">ground ; sol ; Kanto</td>
+                <td class="d-none">common ; commun ; ground ; sol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Triopikeur</td>
+                <td class="pokename"><a href="../Creature/Triopikeur.html">Triopikeur</a></td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Dugtrio_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">0</td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Dugtrio_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>01/05/2025 17:06:20</td>
-                <td class="d-none">ground ; sol ; Kanto</td>
+                <td class="d-none">common ; commun ; ground ; sol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Persian</td>
+                <td class="pokename"><a href="../Creature/Persian.html">Persian</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Persian_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Persian_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:28:50</td>
-                <td class="d-none">normal ; normal ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Abra</td>
+                <td class="pokename"><a href="../Creature/Abra.html">Abra</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Abra_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Abra_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>26/03/2025 19:27:55</td>
-                <td class="d-none">psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Kadabra</td>
+                <td class="pokename"><a href="../Creature/Kadabra.html">Kadabra</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kadabra_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Kadabra_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:03:03</td>
-                <td class="d-none">psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Alakazam</td>
+                <td class="pokename"><a href="../Creature/Alakazam.html">Alakazam</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Alakazam_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Alakazam_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:02:58</td>
-                <td class="d-none">psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Mackogneur</td>
+                <td class="pokename"><a href="../Creature/Mackogneur.html">Mackogneur</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Machamp_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Machamp_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>26/03/2025 21:32:15</td>
-                <td class="d-none">fighting ; combat ; Kanto</td>
+                <td class="d-none">common ; commun ; fighting ; combat ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Tentacool</td>
+                <td class="pokename"><a href="../Creature/Tentacool.html">Tentacool</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tentacool_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tentacool_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:18:57</td>
-                <td class="d-none">water ; eau ; poison ; poison ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Ramoloss</td>
+                <td class="pokename"><a href="../Creature/Ramoloss.html">Ramoloss</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Slowpoke_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Slowpoke_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:33:22</td>
-                <td class="d-none">water ; eau ; psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Flagadoss</td>
+                <td class="pokename"><a href="../Creature/Flagadoss.html">Flagadoss</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Slowbro_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Slowbro_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:31:28</td>
-                <td class="d-none">water ; eau ; psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Doduo</td>
+                <td class="pokename"><a href="../Creature/Doduo.html">Doduo</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Doduo_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Doduo_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:01:41</td>
-                <td class="d-none">normal ; normal ; flying ; vol ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Ectoplasma</td>
+                <td class="pokename"><a href="../Creature/Ectoplasma.html">Ectoplasma</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gengar_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">3</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gengar_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:26:14</td>
-                <td class="d-none">ghost ; spectre ; poison ; poison ; Kanto</td>
+                <td class="d-none">common ; commun ; ghost ; spectre ; poison ; poison ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Soporifik</td>
+                <td class="pokename"><a href="../Creature/Soporifik.html">Soporifik</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Drowzee_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Drowzee_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:03:28</td>
-                <td class="d-none">psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Hypnomade</td>
+                <td class="pokename"><a href="../Creature/Hypnomade.html">Hypnomade</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hypno_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hypno_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:02:35</td>
-                <td class="d-none">psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Krabby</td>
+                <td class="pokename"><a href="../Creature/Krabby.html">Krabby</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Krabby_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Krabby_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>29/05/2025 15:29:58</td>
-                <td class="d-none">water ; eau ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Noeunoeuf</td>
+                <td class="pokename"><a href="../Creature/Noeunoeuf.html">Noeunoeuf</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Exeggcute_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Exeggcute_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:02:43</td>
-                <td class="d-none">grass ; plante ; psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; grass ; plante ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Noadkoko</td>
+                <td class="pokename"><a href="../Creature/Noadkoko.html">Noadkoko</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Exeggutor_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Exeggutor_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:32:27</td>
-                <td class="d-none">grass ; plante ; psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; grass ; plante ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Osselait</td>
+                <td class="pokename"><a href="../Creature/Osselait.html">Osselait</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Cubone_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Cubone_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>29/05/2025 15:57:41</td>
-                <td class="d-none">ground ; sol ; Kanto</td>
+                <td class="d-none">common ; commun ; ground ; sol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Ossatueur</td>
+                <td class="pokename"><a href="../Creature/Ossatueur.html">Ossatueur</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Marowak_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Marowak_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:04:57</td>
-                <td class="d-none">ground ; sol ; Kanto</td>
+                <td class="d-none">common ; commun ; ground ; sol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Kicklee</td>
+                <td class="pokename"><a href="../Creature/Kicklee.html">Kicklee</a></td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hitmonlee_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">0</td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hitmonlee_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td>26/03/2025 22:30:55</td>
-                <td class="d-none">fighting ; combat ; Kanto</td>
+                <td class="d-none">common ; commun ; fighting ; combat ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Tygnon</td>
+                <td class="pokename"><a href="../Creature/Tygnon.html">Tygnon</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hitmonchan_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hitmonchan_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:33:11</td>
-                <td class="d-none">fighting ; combat ; Kanto</td>
+                <td class="d-none">common ; commun ; fighting ; combat ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Leveinard</td>
+                <td class="pokename"><a href="../Creature/Leveinard.html">Leveinard</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Chansey_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Chansey_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:33:05</td>
-                <td class="d-none">normal ; normal ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Hypotrempe</td>
+                <td class="pokename"><a href="../Creature/Hypotrempe.html">Hypotrempe</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Horsea_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Horsea_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:27:35</td>
-                <td class="d-none">water ; eau ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Poissirène</td>
+                <td class="pokename"><a href="../Creature/Poissirène.html">Poissirène</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Goldeen_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Goldeen_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:03:58</td>
-                <td class="d-none">water ; eau ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Insecateur</td>
+                <td class="pokename"><a href="../Creature/Insecateur.html">Insecateur</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Scyther_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Scyther_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:32:22</td>
-                <td class="d-none">bug ; insecte ; flying ; vol ; Kanto</td>
+                <td class="d-none">common ; commun ; bug ; bug ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Lippoutou</td>
+                <td class="pokename"><a href="../Creature/Lippoutou.html">Lippoutou</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Jynx_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">3</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Jynx_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 21:10:00</td>
-                <td class="d-none">ice ; glace ; psychic ; psy ; Kanto</td>
+                <td class="d-none">common ; commun ; ice ; glace ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Magmar</td>
+                <td class="pokename"><a href="../Creature/Magmar.html">Magmar</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magmar_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magmar_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:01:36</td>
-                <td class="d-none">fire ; feu ; Kanto</td>
+                <td class="d-none">common ; commun ; fire ; feu ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Tauros</td>
+                <td class="pokename"><a href="../Creature/Tauros.html">Tauros</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tauros_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tauros_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:17:07</td>
-                <td class="d-none">normal ; normal ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Magicarpe</td>
+                <td class="pokename"><a href="../Creature/Magicarpe.html">Magicarpe</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magikarp_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Magikarp_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:04:03</td>
-                <td class="d-none">water ; eau ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Léviator</td>
+                <td class="pokename"><a href="../Creature/Léviator.html">Léviator</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gyarados_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gyarados_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 19:31:30</td>
-                <td class="d-none">water ; eau ; flying ; vol ; Kanto</td>
+                <td class="d-none">common ; commun ; water ; eau ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Métamorph</td>
+                <td class="pokename"><a href="../Creature/Métamorph.html">Métamorph</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ditto_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ditto_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>28/03/2025 19:27:01</td>
-                <td class="d-none">normal ; normal ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Evoli</td>
+                <td class="pokename"><a href="../Creature/Evoli.html">Evoli</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Eevee_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Eevee_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>29/05/2025 15:39:32</td>
-                <td class="d-none">normal ; normal ; Kanto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Artikodin</td>
+                <td class="pokename"><a href="../Creature/Artikodin.html">Artikodin</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Articuno_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Articuno_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>28/03/2025 18:57:41</td>
-                <td class="d-none">légendaire legendaire legendary ; ice ; glace ; flying ; vol ; Kanto</td>
+                <td class="d-none">legendary ; legendaire ; légendaire legendaire legendary ; ice ; glace ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Sulfura</td>
+                <td class="pokename"><a href="../Creature/Sulfura.html">Sulfura</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Moltres_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Moltres_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 20:20:07</td>
-                <td class="d-none">légendaire legendaire legendary ; fire ; feu ; flying ; vol ; Kanto</td>
+                <td class="d-none">legendary ; legendaire ; légendaire legendaire legendary ; fire ; feu ; flying ; vol ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Mewtwo</td>
+                <td class="pokename"><a href="../Creature/Mewtwo.html">Mewtwo</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mewtwo_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mewtwo_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>26/03/2025 22:29:25</td>
-                <td class="d-none">légendaire legendaire legendary ; psychic ; psy ; Kanto</td>
+                <td class="d-none">legendary ; legendaire ; légendaire legendaire legendary ; psychic ; psy ; Kanto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Feurisson</td>
+                <td class="pokename"><a href="../Creature/Feurisson.html">Feurisson</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Quilava_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Quilava_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:02:46</td>
-                <td class="d-none">fire ; feu ; Johto</td>
+                <td class="d-none">common ; commun ; fire ; feu ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Hoothoot</td>
+                <td class="pokename"><a href="../Creature/Hoothoot.html">Hoothoot</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hoothoot_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Hoothoot_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>29/05/2025 15:29:41</td>
-                <td class="d-none">normal ; normal ; flying ; vol ; Johto</td>
+                <td class="d-none">common ; commun ; normal ; normal ; flying ; vol ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Migalos</td>
+                <td class="pokename"><a href="../Creature/Migalos.html">Migalos</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ariados_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Ariados_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:04:35</td>
-                <td class="d-none">bug ; insecte ; poison ; poison ; Johto</td>
+                <td class="d-none">common ; commun ; bug ; bug ; poison ; poison ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Pichu</td>
+                <td class="pokename"><a href="../Creature/Pichu.html">Pichu</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pichu_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pichu_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:05:02</td>
-                <td class="d-none">electric ; elektrik ; Johto</td>
+                <td class="d-none">common ; commun ; electric ; elektrik ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Mélo</td>
+                <td class="pokename"><a href="../Creature/Mélo.html">Mélo</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Cleffa_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Cleffa_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:04:25</td>
-                <td class="d-none">fairy ; fée ; Johto</td>
+                <td class="d-none">common ; commun ; fairy ; fée ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Togepi</td>
+                <td class="pokename"><a href="../Creature/Togepi.html">Togepi</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Togepi_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Togepi_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:07:15</td>
-                <td class="d-none">fairy ; fée ; Johto</td>
+                <td class="d-none">common ; commun ; fairy ; fée ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Lainergie</td>
+                <td class="pokename"><a href="../Creature/Lainergie.html">Lainergie</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Flaaffy_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Flaaffy_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:03:10</td>
-                <td class="d-none">electric ; elektrik ; Johto</td>
+                <td class="d-none">common ; commun ; electric ; elektrik ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Marill</td>
+                <td class="pokename"><a href="../Creature/Marill.html">Marill</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Marill_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Marill_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:02:23</td>
-                <td class="d-none">water ; eau ; fairy ; fée ; Johto</td>
+                <td class="d-none">common ; commun ; water ; eau ; fairy ; fée ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Yanma</td>
+                <td class="pokename"><a href="../Creature/Yanma.html">Yanma</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Yanma_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Yanma_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:00:55</td>
-                <td class="d-none">bug ; insecte ; flying ; vol ; Johto</td>
+                <td class="d-none">common ; commun ; bug ; bug ; flying ; vol ; Johto</td>
             </tr>
 
 <tr>
-                <td class="pokename">Entei</td>
+                <td class="pokename"><a href="../Creature/Entei.html">Entei</a></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Entei_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Entei_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td>01/05/2025 17:01:11</td>
-                <td class="d-none">légendaire legendaire legendary ; fire ; feu ; Johto</td>
+                <td class="d-none">mythical ; mythique ; légendaire legendaire legendary ; fire ; feu ; Johto</td>
             </tr>
 </tbody>
     </table>
@@ -814,7 +977,7 @@ font-weight: bolder;
           <p class="textShadow">Shiny dex : 4</p>
           <p class="textShadow">Trainer since : 26 Mar. 25</p>
           <p class="textShadow">Platform : twitch <img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/platform/twitch.png" style="height: 16px; width: 16px;"></p>
-          <p class="textShadow">Level : 7</p>
+          <p class="textShadow">Level : 8</p>
           <p class="textShadow">Captures : 77</p>
             </div>
         </div>
@@ -841,8 +1004,17 @@ font-weight: bolder;
 </div>
 <div class="col">
     <img
-        src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/dB8kv_2ZGu4nI0MBXQBAB9C7uCMUi0rkDPwgZRSHqZo.webp"
+        src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/regionalSerie/Other_Marshmallow.png"
         alt="Badge 2"
+        style="height: 48px; width: 48px;"
+        class="img-badge img-badge-legendary"
+        title="A enregistré tous le pokédex de Guimauve.">
+    <p style="font-size: 12px; margin-top: 4px" class="textShadow">Full Pokédex Guimauve.</p>
+</div>
+<div class="col">
+    <img
+        src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/dB8kv_2ZGu4nI0MBXQBAB9C7uCMUi0rkDPwgZRSHqZo.webp"
+        alt="Badge 3"
         style="height: 48px; width: 48px;"
         class="img-badge img-badge-epic"
         title="Dresseur depuis 3 mois.">
@@ -851,7 +1023,7 @@ font-weight: bolder;
 <div class="col">
     <img
         src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/great.png"
-        alt="Badge 3"
+        alt="Badge 4"
         style="height: 48px; width: 48px;"
         class="img-badge img-badge-uncommon"
         title="100 balls lancés.">
@@ -860,7 +1032,7 @@ font-weight: bolder;
 <div class="col">
     <img
         src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/nest.png"
-        alt="Badge 4"
+        alt="Badge 5"
         style="height: 48px; width: 48px;"
         class="img-badge img-badge-uncommon"
         title="50 pokémons attrapés.">
@@ -869,7 +1041,7 @@ font-weight: bolder;
 <div class="col">
     <img
         src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/giant-stone.png"
-        alt="Badge 5"
+        alt="Badge 6"
         style="height: 48px; width: 48px;"
         class="img-badge img-badge-uncommon"
         title="1 shiny attrapé.">
@@ -878,7 +1050,7 @@ font-weight: bolder;
 <div class="col">
     <img
         src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/blue_by_OrangeWaker.png"
-        alt="Badge 6"
+        alt="Badge 7"
         style="height: 48px; width: 48px;"
         class="img-badge img-badge-uncommon"
         title="Dresseur depuis 1 mois.">
@@ -887,20 +1059,11 @@ font-weight: bolder;
 <div class="col">
     <img
         src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/poke.png"
-        alt="Badge 7"
+        alt="Badge 8"
         style="height: 48px; width: 48px;"
         class="img-badge img-badge-common"
         title="10 balls lancés.">
     <p style="font-size: 12px; margin-top: 4px" class="textShadow">Tuto capture.</p>
-</div>
-<div class="col">
-    <img
-        src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/love.png"
-        alt="Badge 8"
-        style="height: 48px; width: 48px;"
-        class="img-badge img-badge-common"
-        title="5 pokémons attrapés.">
-    <p style="font-size: 12px; margin-top: 4px" class="textShadow">Dresseur débutant.</p>
 </div>
       </div>
     </div>
@@ -927,13 +1090,13 @@ font-weight: bolder;
 
 <br><br>
 <p>Stats :</p><br>
-<p>Nombre d'espèce enregistrée : 61 / 254</p><div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 24%;" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100">24%</div>
+<p>Nombre d'espèce enregistrée : 61 / 1147</p><div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
 </div><p>Nombre d'espèce shiny enregistrée : 4</p><div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100">1%</div>
-</div><br><p>Total argent dépensé : 30950</p><p>Total de ball lancées : 121</p><br><p>Nombre de pokémon non shiny capturé : 73</p><p>Nombre de pokémon shiny capturé : 3</p><p>Total de pokémon attrapé : 76</p><p>Pokémon le plus attrapé : lainergie#n</p><p>Dresseur depuis : 26/03/2025 19:17:07 (depuis 102 jours.)</p>
+  <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+</div><br><p>Total argent dépensé : 30950</p><p>Total de ball lancées : 121</p><br><p>Nombre de pokémon non shiny capturé : 73</p><p>Nombre de pokémon shiny capturé : 3</p><p>Total de pokémon attrapé : 76</p><p>Pokémon le plus attrapé : lainergie#n</p><p>Dresseur depuis : 26/03/2025 19:17:07 (depuis 104 jours.)</p>
 <p>Badges :</p><br>
-<p>Level 7</p><br><p>121 XP/950 XP</p><br><p>2928 XP Totale</p><br><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Global [9/32]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Envoyer des balls ! [2/4]</b></h4>   <div class="row">
+<p>Level 8</p><br><p>175 XP/1187 XP</p><br><p>3932 XP Totale</p><br><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Global [9/32]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Envoyer des balls ! [2/4]</b></h4>   <div class="row">
                             <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
                                 <div class="card common" style="background-color: #222222;  height: 220px;">
                                   <center><br><img src="https://s3.pokeos.com/pokeos-uploads/forgotten-dex/pokeball/poke.png" class="card-img-top trophy-True" alt="..." style="height: 96px; width: auto;"></center>
@@ -1308,6 +1471,42 @@ font-weight: bolder;
                                   <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/ptcgp/ptcgp_CELEBI.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
                                   <div class="card-body">
                                     <h5 class="card-title">Maitre du temps.</h5>
+                                    <p class="card-text">???? [+1000XP]</p>
+                                  </div>
+                                </div>
+                            </div>   </div></div><br><br><br><h2 class="col-12" style="margin-top:25px"><b>Pokédex [1/4]</b></h2><div class="row">  <br><br><h4 class="col-12" style="margin-top:15px"><b>Fulldex [1/4]</b></h4>   <div class="row">
+                            <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
+                                <div class="card exotic" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/regionalSerie/Kanto.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Full Pokédex 1G.</h5>
+                                    <p class="card-text">???? [+12500XP]</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
+                                <div class="card exotic" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/regionalSerie/Johto.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Full Pokédex 2G.</h5>
+                                    <p class="card-text">???? [+12500XP]</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
+                                <div class="card legendary" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/regionalSerie/Other_Marshmallow.png" class="card-img-top trophy-True" alt="..." style="height: 96px; width: auto;"></center>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Full Pokédex Guimauve.</h5>
+                                    <p class="card-text">A enregistré tous le pokédex de Guimauve. [+1000XP]</p>
+                                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 29vw;  margin-left: 1vw; margin-bottom: 15px;">
+                                <div class="card legendary" style="background-color: #222222;  height: 220px;">
+                                  <center><br><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/badge/custom/regionalSerie/Other_Ditto.png" class="card-img-top trophy-False" alt="..." style="height: 96px; width: auto;"></center>
+                                  <div class="card-body">
+                                    <h5 class="card-title">Full Morph-o-Dex.</h5>
                                     <p class="card-text">???? [+1000XP]</p>
                                   </div>
                                 </div>
