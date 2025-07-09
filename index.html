@@ -6,85 +6,60 @@
   <title>Accueil Pokédex</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
   <style>
+    :root {
+      --grass-height: 22vh;
+    }
+
     body {
       margin: 0;
-      height: 100vh;
       background: linear-gradient(135deg, #001f3f, #87cefa);
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-family: 'Press Start 2P', cursive;
       overflow: hidden;
-      cursor: url("C:/Pokedex Streams/SitePokedex/Assets/pokeball-cursor.png"), auto;
     }
 
     .logo {
       position: absolute;
-      top: 40px;
+      top: 2vh;
       left: 50%;
       transform: translateX(-50%);
-      width: 400px;
-      max-width: 90%;
+      width: 40vw;
+      max-width: 400px;
+      z-index: 3;
     }
 
     .panel {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background: rgba(255, 255, 255, 0.1);
-      padding: 60px 40px;
+      padding: 4vh 5vw;
       border-radius: 20px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
       text-align: center;
-      animation: popIn 0.8s ease-out;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      z-index: 3;
     }
 
     .button {
-      position: relative;
-      padding: 20px 40px;
-      font-size: 1rem;
+      padding: 1em 2em;
+      font-size: 0.8rem;
       color: white;
       background: linear-gradient(145deg, #5dade2, #3498db);
       border: none;
       border-radius: 12px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
       cursor: pointer;
-      transition: all 0.3s ease;
       text-decoration: none;
-      display: inline-block;
-      z-index: 1;
-    }
-
-    .button::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      border-radius: 16px;
-      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-      animation: pulseGlow 2s infinite ease-in-out;
-      z-index: -1;
-      opacity: 0.6;
-    }
-
-    @keyframes pulseGlow {
-      0%   { transform: scale(1); opacity: 0.6; }
-      50%  { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.6; }
     }
 
     .social-link {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 2vh;
+      left: 2vw;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      z-index: 4;
     }
 
     .social-item {
@@ -92,20 +67,10 @@
       align-items: center;
       gap: 10px;
       padding: 10px 20px;
-      background: transparent;
-      border-radius: 12px;
-      text-decoration: none;
       color: white;
       font-size: 0.6rem;
-      font-family: 'Press Start 2P', cursive;
+      text-decoration: none;
       transition: all 0.3s ease;
-    }
-
-    .social-item:hover {
-      background: linear-gradient(145deg, #3498db, #5dade2);
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #5dade2;
-      color: white;
     }
 
     .social-item img {
@@ -115,53 +80,73 @@
 
     .music-toggle {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 2vh;
+      right: 2vw;
       background: transparent;
       border: none;
       color: white;
       font-size: 0.6rem;
-      font-family: 'Press Start 2P', cursive;
       cursor: pointer;
       padding: 10px 20px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
+      z-index: 4;
     }
 
-    .music-toggle:hover {
-      background: linear-gradient(145deg, #3498db, #5dade2);
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #5dade2;
-    }
-
-    .grass-strip {
+    .mountain-bg {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 190px;
-      background-image: url("https://i.ibb.co/JRVDnWc1/Hautes-Herbes.png");
-      background-repeat: repeat-x;
-      background-size: contain;
-      animation: sway 3s ease-in-out infinite alternate;
-      pointer-events: none;
-      z-index: 1;
+      height: auto;
+      opacity: 0.4;
+      z-index: -1;
+      object-fit: cover;
     }
 
-    @keyframes sway {
-      0% { transform: translateY(0) scaleX(1); }
-      50% { transform: translateY(3px) scaleX(1.01); }
-      100% { transform: translateY(0) scaleX(1); }
+    .grass-layer-behind {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 10vh;
+      background-image: url("https://i.ibb.co/DHx0YMb8/Herbe-Fond.png");
+      background-repeat: repeat-x;
+      background-size: cover;
+      background-position: bottom;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .simularbre {
+  position: absolute;
+  bottom: 0;
+  right: 3vw;
+  height: 40vh;
+  z-index: 5; /* derrière l’herbe */
+  image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+}
+
+    .lugia {
       position: absolute;
-      bottom: 60px;
-      right: 40px;
-      height: 240px;
-      z-index: 0;
-      opacity: 0.95;
-      pointer-events: none;
+      top: -20px;
+      right: -500px;
+      height: 30vh;
+      opacity: 0.8;
+      z-index: 1;
+      animation: flyLugia 20s linear infinite;
+      image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+    }
+
+    @keyframes flyLugia {
+      0%   { transform: translateX(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(-140vw); opacity: 0; }
     }
 
     #pikachu-container {
@@ -170,22 +155,25 @@
       left: 0;
       width: 100%;
       height: 220px;
-      pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
 
     .pikachu-wrapper {
       position: absolute;
       bottom: 0;
-      pointer-events: none;
     }
 
     .pikachu {
-      position: absolute;
-      height: 220px;
-      bottom: 20px;
-      animation: pikachuJumpIn 0.4s ease-out;
-    }
+  position: absolute;
+  bottom: 6vh;
+  height: 30vh;
+  z-index: 5; /* derrière l’herbe */
+  animation: pikachuJumpIn 0.4s ease-out;
+  image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+}
 
     @keyframes pikachuJumpIn {
       0%   { transform: translateY(100%) scale(1); opacity: 0; }
@@ -199,66 +187,46 @@
       100% { transform: translateY(100%) scale(0.9); opacity: 0; }
     }
 
-    .leaf {
-      position: absolute;
-      width: 32px;
-      height: 32px;
-      opacity: 0;
-      animation: leafBurst 0.6s ease-out forwards;
+    @media (max-width: 768px) {
+      .logo { width: 60vw; }
+      .button { font-size: 0.6rem; padding: 0.8em 1.5em; }
+      .simularbre { height: 20vh; }
+      .pikachu { height: 18vh; }
+      .lugia { height: 25vh; }
     }
 
-    .leaf1 { top: 60px; left: 20px; animation-delay: 0s; }
-    .leaf2 { top: 50px; left: 80px; animation-delay: 0.1s; }
-    .leaf3 { top: 70px; left: 40px; animation-delay: 0.2s; }
-    .leaf4 { top: 55px; left: 100px; animation-delay: 0.15s; }
-    .leaf5 { top: 65px; left: 60px; animation-delay: 0.05s; }
-
-    @keyframes leafBurst {
-      0%   { transform: scale(0.5) translateY(0); opacity: 0; }
-      50%  { transform: scale(1.2) translateY(-10px); opacity: 1; }
-      100% { transform: scale(1) translateY(-20px); opacity: 0; }
-    }
-
-    @keyframes leafFall {
-      0%   { transform: translateY(-20px); opacity: 1; }
-      100% { transform: translateY(40px) rotate(90deg); opacity: 0; }
-    }
-
-    audio {
-      display: none;
-    }
-
-    .lugia {
-  position: absolute;
-  top: -20px;
-  right: -500px;
-  height: 300px;
-  opacity: 0.8;
-  z-index: 0;
-  transform: scaleX(1); /* Inversion horizontale */
-  animation: flyLugia 20s linear infinite;
-  animation-delay: 4s;
-}
-
-@keyframes flyLugia {
-  0%   { transform: translateX(0) scaleX(1); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translateX(-140vw) scaleX(1); opacity: 0; }
-}
-
-.mountain-bg {
-  position: absolute;
-  bottom: 50px; /* abaissé de 50px */
+    .grass-foreground {
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: auto;
-  opacity: 0.4;
-  z-index: -1;
+  height: 30vh;
+  aspect-ratio: 100 / 20; /* largeur / hauteur pour garder les proportions */
+  background-image: url("https://i.ibb.co/bjcG8skZ/Grass.png");
+  background-repeat: repeat-x;
+  background-size: contain; /* affiche l’image entière sans la couper */
+  background-position: bottom;
+  z-index: 5;
   pointer-events: none;
-  object-fit: cover;
 }
 
+.social-item:hover {
+  background: linear-gradient(145deg, #3498db, #5dade2);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #5dade2;
+  color: white;
+}
+
+.button:hover {
+  background: linear-gradient(145deg, #6eb9f0, #2980b9);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+}
+
+.social-item,
+.button {
+  transition: all 0.3s ease;
+}
 
   </style>
 </head>
@@ -266,42 +234,38 @@
 
   <!-- Liens sociaux -->
   <div class="social-link">
-    <a href="https://discord.gg/Jc8yNHwhrc" class="social-item" target="_blank">
-      <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord">
-      <span>Discord</span>
-    </a>
-    <a href="https://www.youtube.com/@TheFlockers" class="social-item" target="_blank">
-      <img src="https://i.ibb.co/RTcnmNrW/Youtube.png" alt="YouTube">
-      <span>YouTube</span>
-    </a>
-    <a href="https://www.tiktok.com/@_the_flockers_" class="social-item" target="_blank">
-      <img src="https://i.ibb.co/7x9GJqNw/TikTok.png" alt="TikTok">
-      <span>TikTok</span>
-    </a>
-    <a href="https://www.twitch.tv/theflockers_" class="social-item" target="_blank">
-      <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch">
-      <span>Twitch</span>
-    </a>
-    <a href="https://gamebanana.com/members/2157838" class="social-item" target="_blank">
-      <img src="https://i.ibb.co/4wFS6377/Gamebanana.png" alt="Gamebanana">
-      <span>Gamebanana (mods)</span>
-    </a>
-    <a href="https://videogamemods.com/xenoverse/modder/theflockers/" class="social-item" target="_blank">
-      <img src="https://i.ibb.co/WWNfprXY/VGM.png" alt="VGM">
-      <span>VGM (mods)</span>
-    </a>
-  </div>
+  <a href="https://discord.gg/Jc8yNHwhrc" class="social-item" target="_blank">
+    <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord"><span>Discord</span>
+  </a>
+  <a href="https://www.youtube.com/@TheFlockers" class="social-item" target="_blank">
+    <img src="https://i.ibb.co/RTcnmNrW/Youtube.png" alt="YouTube"><span>YouTube</span>
+  </a>
+  <a href="https://www.tiktok.com/@_the_flockers_" class="social-item" target="_blank">
+    <img src="https://i.ibb.co/7x9GJqNw/TikTok.png" alt="TikTok"><span>TikTok</span>
+  </a>
+  <a href="https://www.twitch.tv/theflockers_" class="social-item" target="_blank">
+    <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch"><span>Twitch</span>
+  </a>
+  <a href="https://gamebanana.com/members/2157838" class="social-item" target="_blank">
+    <img src="https://i.ibb.co/4wFS6377/Gamebanana.png" alt="Gamebanana"><span>Gamebanana</span>
+  </a>
+  <a href="https://videogamemods.com/xenoverse/modder/theflockers/" class="social-item" target="_blank">
+    <img src="https://i.ibb.co/WWNfprXY/VGM.png" alt="VGM"><span>VGM</span>
+  </a>
+</div>
 
-  <!-- Logo Pokémon -->
-  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokémon" class="logo">
+
+  <!-- Logo -->
+  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="logo" />
+
   <!-- Montagnes -->
-  <img src="https://images.unsplash.com/photo-1525784451128-d1488f52f03e?fm=jpg&q=60&w=3000" alt="Montagnes" class="mountain-bg">
+  <img src="https://images.unsplash.com/photo-1525784451128-d1488f52f03e?fm=jpg&q=60&w=3000" alt="Montagnes" class="mountain-bg" />
 
+  <!-- Herbe derrière les Pokémon -->
+  <div class="grass-layer-behind"></div>
 
-
-  <!-- Gif Lugia -->
-   <img src="https://projectpokemon.org/images/normal-sprite/lugia.gif" alt="Lugia" class="lugia">
-
+  <!-- Lugia -->
+  <img src="https://projectpokemon.org/images/normal-sprite/lugia.gif" alt="Lugia" class="lugia" />
 
   <!-- Panneau central -->
   <div class="panel">
@@ -312,17 +276,14 @@
   <button class="music-toggle" onclick="toggleMusic()">🎵 Musique ON/OFF</button>
 
   <!-- Simularbre -->
-  <img src="https://projectpokemon.org/images/normal-sprite/sudowoodo.gif" alt="Simularbre" class="simularbre">
-
+  <img src="https://projectpokemon.org/images/normal-sprite/sudowoodo.gif" alt="Simularbre" class="simularbre" />
+  
 
   <!-- Pikachu -->
   <div id="pikachu-container"></div>
 
-  <!-- Herbe -->
-  <div class="grass-strip"></div>
-
   <!-- Audio -->
-  <audio id="bgMusic" src="http://dl.dropboxusercontent.com/scl/fi/c3d8xtllxh8xz123g50l2/Lugia-s-Song-Pok-mon-2000-EPIC-VERSION-extended.mp3?rlkey=2hlr7g068gixyaaojta998zv1&st=rlq6zvmh&" autoplay loop></audio>
+  <audio id="bgMusic" src="http://dl.dropboxusercontent.com/scl/fi/c3d8xtllxh8xz123g50l2/Lugia-s-Song-Pok-mon-2000-EPIC-VERSION-extended.mp3" autoplay loop></audio>
   <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
 
   <!-- Script -->
@@ -344,6 +305,8 @@
 
     function spawnPikachuOnce() {
       const container = document.getElementById("pikachu-container");
+
+      // Ne pas faire apparaître un nouveau Pikachu s’il y en a déjà un
       if (container.querySelector(".pikachu-wrapper")) return;
 
       const wrapper = document.createElement("div");
@@ -354,44 +317,31 @@
       img.alt = "Pikachu";
       img.className = "pikachu";
 
-      // Feuilles
-      for (let i = 0; i < 5; i++) {
-        const leaf = document.createElement("img");
-        leaf.src = "C:/Pokedex Streams/SitePokedex/Assets/Feuilles.png";
-        leaf.className = "leaf leaf" + (i + 1);
-        wrapper.appendChild(leaf);
-      }
-
       wrapper.appendChild(img);
-      const maxX = window.innerWidth - 180;
-      wrapper.style.left = `${Math.random() * maxX}px`;
+
+      // Position horizontale aléatoire
+      const screenWidth = window.innerWidth;
+      const pikachuWidth = screenWidth * 0.12; // 12vw approx
+      const maxX = screenWidth - pikachuWidth;
+      const posX = Math.random() * maxX;
+      wrapper.style.left = `${posX}px`;
+
       container.appendChild(wrapper);
 
-      // Disparition
+      // Disparition animée
       setTimeout(() => {
         img.style.animation = "pikachuJumpOut 0.4s ease-in forwards";
-        wrapper.querySelectorAll(".leaf").forEach(leaf => {
-          leaf.style.animation = "leafFall 0.6s ease-in forwards";
-        });
         setTimeout(() => wrapper.remove(), 600);
       }, 2000 + Math.random() * 2000);
     }
 
+    // Apparition automatique de Pikachu toutes les 3 à 6 secondes
     setInterval(() => {
       spawnPikachuOnce();
     }, 3000 + Math.random() * 3000);
   </script>
+
+  <div class="grass-foreground"></div>
+
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
 </html>
