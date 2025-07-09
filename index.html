@@ -1,146 +1,382 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamDex</title>
-    <style>
-        @font-face {
-            font-family: 'PokemonFont';
-            src: url('path/to/pokemon-font.ttf') format('truetype');
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accueil Pokédex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #001f3f, #87cefa);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Press Start 2P', cursive;
+      overflow: hidden;
+      cursor: url("C:/Pokedex Streams/SitePokedex/Assets/pokeball-cursor.png"), auto;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: #fff;
-        }
+    .logo {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      max-width: 90%;
+    }
 
-        .title-image {
-            margin-top: 20px;
-            width: 300px; /* Ajuste la largeur selon tes besoins */
-            height: auto;
-        }
+    .panel {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 60px 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: popIn 0.8s ease-out;
+    }
 
-        .buttons-container {
-            margin-top: 30px; /* Espacement entre le titre et les boutons */
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 50px; /* Espacement entre les deux boutons */
-        }
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    .button {
+      position: relative;
+      padding: 20px 40px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(145deg, #5dade2, #3498db);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      z-index: 1;
+    }
 
-        .pokeball {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            background: #fff;
-            border: 6px solid #000;
-            border-radius: 50%;
-            cursor: pointer;
-            overflow: hidden;
-            transition: transform 0.5s ease;
-        }
+    .button::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 16px;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+      animation: pulseGlow 2s infinite ease-in-out;
+      z-index: -1;
+      opacity: 0.6;
+    }
 
-        .pokeball::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: #8b0000; /* Rouge foncé */
-            border-bottom: 3px solid #000;
-        }
+    @keyframes pulseGlow {
+      0%   { transform: scale(1); opacity: 0.6; }
+      50%  { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
 
-        .pokeball:hover {
-            transform: rotate(360deg); /* Effet de rotation pour la Pokéball */
-        }
+    .social-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        .center-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: #fff;
-            border: 5px solid #000;
-            border-radius: 50%;
-        }
+    .social-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      background: transparent;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.6rem;
+      font-family: 'Press Start 2P', cursive;
+      transition: all 0.3s ease;
+    }
 
-        .discord-button {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            background: #fff;
-            border: 6px solid #000; /* Même bordure noire */
-            border-radius: 50%; /* Bouton rond */
-            cursor: pointer;
-            overflow: hidden;
-            transition: box-shadow 0.3s ease;
-        }
+    .social-item:hover {
+      background: linear-gradient(145deg, #3498db, #5dade2);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #5dade2;
+      color: white;
+    }
 
-        .discord-button img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%; /* Rendre l'image ronde */
-        }
+    .social-item img {
+      width: 24px;
+      height: 24px;
+    }
 
-        .discord-button:hover {
-            animation: shake 0.3s infinite; /* Animation de tremblement */
-            box-shadow: 0 0 15px #5865F2; /* Effet de lueur */
-        }
+    .music-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 0.6rem;
+      font-family: 'Press Start 2P', cursive;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
 
-        @keyframes shake {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-2px, 2px); }
-            50% { transform: translate(2px, -2px); }
-            75% { transform: translate(-2px, -2px); }
-            100% { transform: translate(2px, 2px); }
-        }
+    .music-toggle:hover {
+      background: linear-gradient(145deg, #3498db, #5dade2);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #5dade2;
+    }
 
-        .label {
-            margin-bottom: 10px;
-            font-size: 2rem; /* Tailles identiques pour les deux textes */
-        }
-    </style>
+    .grass-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-image: url("C:/Pokedex Streams/SitePokedex/Assets/Hautes_Herbes.png");
+      background-repeat: repeat-x;
+      background-size: contain;
+      animation: sway 3s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes sway {
+      0% { transform: translateY(0) scaleX(1); }
+      50% { transform: translateY(3px) scaleX(1.01); }
+      100% { transform: translateY(0) scaleX(1); }
+    }
+
+    .simularbre {
+      position: absolute;
+      bottom: 0;
+      right: 40px;
+      height: 180px;
+      z-index: 0;
+      opacity: 0.95;
+      pointer-events: none;
+    }
+
+    #pikachu-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 180px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pikachu-wrapper {
+      position: absolute;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .pikachu {
+      position: absolute;
+      height: 180px;
+      bottom: 0;
+      animation: pikachuJumpIn 0.4s ease-out;
+    }
+
+    @keyframes pikachuJumpIn {
+      0%   { transform: translateY(100%) scale(1); opacity: 0; }
+      50%  { transform: translateY(-15px) scale(1.02); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    @keyframes pikachuJumpOut {
+      0%   { transform: translateY(0) scale(1); opacity: 1; }
+      50%  { transform: translateY(10px) scale(0.98); opacity: 1; }
+      100% { transform: translateY(100%) scale(0.9); opacity: 0; }
+    }
+
+    .leaf {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      opacity: 0;
+      animation: leafBurst 0.6s ease-out forwards;
+    }
+
+    .leaf1 { top: 60px; left: 20px; animation-delay: 0s; }
+    .leaf2 { top: 50px; left: 80px; animation-delay: 0.1s; }
+    .leaf3 { top: 70px; left: 40px; animation-delay: 0.2s; }
+    .leaf4 { top: 55px; left: 100px; animation-delay: 0.15s; }
+    .leaf5 { top: 65px; left: 60px; animation-delay: 0.05s; }
+
+    @keyframes leafBurst {
+      0%   { transform: scale(0.5) translateY(0); opacity: 0; }
+      50%  { transform: scale(1.2) translateY(-10px); opacity: 1; }
+      100% { transform: scale(1) translateY(-20px); opacity: 0; }
+    }
+
+    @keyframes leafFall {
+      0%   { transform: translateY(-20px); opacity: 1; }
+      100% { transform: translateY(40px) rotate(90deg); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+
+    .lugia {
+  position: absolute;
+  top: 100px;
+  right: -300px;
+  height: 230px;
+  opacity: 0.8;
+  z-index: 0;
+  transform: scaleX(1); /* Inversion horizontale */
+  animation: flyLugia 20s linear infinite;
+  animation-delay: 2s;
+}
+
+@keyframes flyLugia {
+  0%   { transform: translateX(0) scaleX(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(-140vw) scaleX(1); opacity: 0; }
+}
+
+
+
+  </style>
 </head>
-<body>
-    <img src="https://i.ibb.co/Q7rMDWkv/Copilot-20250709-014456.png" alt="Titre" class="title-image">
-    <div class="buttons-container">
-        <div class="button-group">
-            <p class="label">StreamDex</p>
-            <a href="pokedexLive/main.html">
-                <div class="pokeball">
-                    <div class="center-button"></div>
-                </div>
-            </a>
-        </div>
-        <div class="button-group">
-            <p class="label">Discord</p>
-            <a href="https://discord.gg/Jc8yNHwhrc">
-                <div class="discord-button">
-                    <img src="./Assets/didi.png" alt="Logo Discord">
-                </div>
-            </a>
-        </div>
-    </div>
+<body onload="startMusic()">
+
+  <!-- Liens sociaux -->
+  <div class="social-link">
+    <a href="https://discord.gg/Jc8yNHwhrc" class="social-item" target="_blank">
+      <img src="C:/Pokedex Streams/SitePokedex/Assets/didi.png" alt="Discord">
+      <span>Discord</span>
+    </a>
+    <a href="https://www.youtube.com/@TheFlockers" class="social-item" target="_blank">
+      <img src="C:/Pokedex Streams/SitePokedex/Assets/Youtube.png" alt="YouTube">
+      <span>YouTube</span>
+    </a>
+    <a href="https://www.tiktok.com/@_the_flockers_" class="social-item" target="_blank">
+      <img src="C:/Pokedex Streams/SitePokedex/Assets/TikTok.png" alt="TikTok">
+      <span>TikTok</span>
+    </a>
+    <a href="https://www.twitch.tv/theflockers_" class="social-item" target="_blank">
+      <img src="C:/Pokedex Streams/SitePokedex/Assets/Twitch.png" alt="Twitch">
+      <span>Twitch</span>
+    </a>
+    <a href="https://gamebanana.com/members/2157838" class="social-item" target="_blank">
+      <img src="C:/Pokedex Streams/SitePokedex/Assets/Gamebanana.png" alt="Gamebanana">
+      <span>Gamebanana (mods)</span>
+    </a>
+    <a href="https://videogamemods.com/xenoverse/modder/theflockers/" class="social-item" target="_blank">
+      <img src="C:/Pokedex Streams/SitePokedex/Assets/VGM.png" alt="VGM">
+      <span>VGM (mods)</span>
+    </a>
+  </div>
+
+  <!-- Logo Pokémon -->
+  <img src="C:/Pokedex Streams/SitePokedex/Assets/POKEDEX_DE_STREAM.png" alt="Logo Pokémon" class="logo">
+
+  <!-- Gif Lugia -->
+   <img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Lugia_normal.gif" alt="Lugia" class="lugia">
+
+
+  <!-- Panneau central -->
+  <div class="panel">
+    <a href="pokedexLive/main.html" class="button" onclick="document.getElementById('clickSound').play()">Accéder au Pokédex</a>
+  </div>
+
+  <!-- Bouton musique -->
+  <button class="music-toggle" onclick="toggleMusic()">🎵 Musique ON/OFF</button>
+
+  <!-- Simularbre -->
+  <img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Sudowoodo_normal.gif" alt="Simularbre" class="simularbre">
+
+
+  <!-- Pikachu -->
+  <div id="pikachu-container"></div>
+
+  <!-- Herbe -->
+  <div class="grass-strip"></div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" src="C:/Pokedex Streams/SitePokedex/Assets/Pokémon Theme.mp3" loop></audio>
+  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+
+  <!-- Script -->
+  <script>
+    const bgMusic = document.getElementById('bgMusic');
+
+    function startMusic() {
+      bgMusic.volume = 0.5;
+      bgMusic.play().catch(() => {});
+    }
+
+    function toggleMusic() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      } else {
+        bgMusic.pause();
+      }
+    }
+
+    function spawnPikachuOnce() {
+      const container = document.getElementById("pikachu-container");
+      if (container.querySelector(".pikachu-wrapper")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "pikachu-wrapper";
+
+      const img = document.createElement("img");
+      img.src = "https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Pikachu_normal.gif";
+      img.alt = "Pikachu";
+      img.className = "pikachu";
+
+      // Feuilles
+      for (let i = 0; i < 5; i++) {
+        const leaf = document.createElement("img");
+        leaf.src = "C:/Pokedex Streams/SitePokedex/Assets/Feuilles.png";
+        leaf.className = "leaf leaf" + (i + 1);
+        wrapper.appendChild(leaf);
+      }
+
+      wrapper.appendChild(img);
+      const maxX = window.innerWidth - 180;
+      wrapper.style.left = `${Math.random() * maxX}px`;
+      container.appendChild(wrapper);
+
+      // Disparition
+      setTimeout(() => {
+        img.style.animation = "pikachuJumpOut 0.4s ease-in forwards";
+        wrapper.querySelectorAll(".leaf").forEach(leaf => {
+          leaf.style.animation = "leafFall 0.6s ease-in forwards";
+        });
+        setTimeout(() => wrapper.remove(), 600);
+      }, 2000 + Math.random() * 2000);
+    }
+
+    setInterval(() => {
+      spawnPikachuOnce();
+    }, 3000 + Math.random() * 3000);
+  </script>
 </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
 </html>
