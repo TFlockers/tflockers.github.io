@@ -20,19 +20,24 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
+    /* Image en haut */
     .header-image {
       position: absolute;
       top: 20px;
-      width: 300px;
+      width: 400px;
       height: auto;
+      z-index: 3;
     }
 
+    /* Bouton Pokédex */
     .btn-container {
       position: relative;
       display: inline-block;
-      margin-top: 150px;
+      margin-top: 220px;
+      z-index: 2;
     }
 
     .btn-pokedex {
@@ -48,8 +53,6 @@
       box-shadow: 0 0 20px rgba(173, 216, 230, 0.9);
       transition: transform 0.2s ease-in-out;
       animation: glowPulse 2s infinite ease-in-out;
-      position: relative;
-      z-index: 2;
     }
 
     @keyframes glowPulse {
@@ -58,6 +61,7 @@
       100% { box-shadow: 0 0 30px rgba(173, 216, 230, 0.5); }
     }
 
+    /* Scintillements */
     .sparkle {
       position: absolute;
       width: 6px;
@@ -79,10 +83,39 @@
       50% { transform: scale(1.5) translateY(-3px); opacity: 1; }
       100% { transform: scale(1); opacity: 0.8; }
     }
+
+    /* Réseaux sociaux en bas à gauche */
+    .social-fixed {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 5;
+    }
+
+    .social-fixed a {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.6em;
+      color: #ffffff;
+      background-color: rgba(59, 76, 202, 0.7);
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .social-fixed a:hover {
+      background-color: rgba(173, 216, 230, 0.9);
+      color: #3b4cca;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="header-image">
+
   <div class="btn-container">
     <a href="https://tflockers.github.io/pokedexLive/main.html" class="btn-pokedex">
       Accéder au Pokédex
@@ -91,6 +124,13 @@
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
+  </div>
+
+  <div class="social-fixed">
+    <a href="https://twitter.com/" target="_blank">Twitter</a>
+    <a href="https://instagram.com/" target="_blank">Instagram</a>
+    <a href="https://youtube.com/" target="_blank">YouTube</a>
+    <a href="https://twitch.tv/" target="_blank">Twitch</a>
   </div>
 </body>
 </html>
