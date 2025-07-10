@@ -23,29 +23,60 @@
       position: relative;
     }
 
-    .header-image {
+    /* IMAGE ANIMÉE EN HAUT */
+    .animated-header {
       position: absolute;
       top: 20px;
       width: 400px;
       height: auto;
       z-index: 3;
+      animation: pokedexCycle 8s linear infinite;
     }
 
+    @keyframes pokedexCycle {
+      0%   { content: url('https://i.ibb.co/r2n3FQVs/Base.png'); }
+      25%  { content: url('https://i.ibb.co/SwBJk7Qf/Base1.png'); }
+      50%  { content: url('https://i.ibb.co/DfFpynP2/Base2.png'); }
+      75%  { content: url('https://i.ibb.co/YH45CSL/Base3.png'); }
+      100% { content: url('https://i.ibb.co/r2n3FQVs/Base.png'); }
+    }
+
+    /* HO-OH + TRAÎNÉE LUMINEUSE */
     .hooh-image {
-  position: absolute;
-  top: 220px; /* Anciennement 130px */
-  width: 140px;
-  height: auto;
-  animation: hoohFly 20s linear infinite;
-  z-index: 2;
-}
+      position: absolute;
+      top: 250px;
+      width: 140px;
+      height: auto;
+      animation: hoohFly 20s linear infinite;
+      z-index: 2;
+    }
 
+    .hooh-trail {
+      position: absolute;
+      top: 270px;
+      left: 100%;
+      width: 200px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 80%);
+      animation: trailFly 20s linear infinite;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.8;
+      filter: blur(6px);
+    }
 
-@keyframes hoohFly {
-  0% { left: 100%; }
-  100% { left: -140px; }
-}
+    @keyframes hoohFly {
+      0% { left: 100%; }
+      100% { left: -140px; }
+    }
 
+    @keyframes trailFly {
+      0% { left: 100%; opacity: 0.8; }
+      20% { opacity: 1; }
+      100% { left: -200px; opacity: 0.2; }
+    }
+
+    /* BOUTON PRINCIPAL */
     .btn-container {
       position: relative;
       display: inline-block;
@@ -74,6 +105,7 @@
       100% { box-shadow: 0 0 30px rgba(173, 216, 230, 0.5); }
     }
 
+    /* SCINTILLEMENTS */
     .sparkle {
       position: absolute;
       width: 6px;
@@ -96,6 +128,7 @@
       100% { transform: scale(1); opacity: 0.8; }
     }
 
+    /* LIENS SOCIAUX & MODDING */
     .social-fixed {
       position: fixed;
       bottom: 20px;
@@ -111,13 +144,12 @@
       gap: 12px;
     }
 
-    .social-fixed a {
+    .social-fixed a, .mod-button a {
       display: inline-block;
       border-radius: 50%;
     }
 
-    .social-fixed a img,
-    .mod-button a img {
+    .social-fixed a img, .mod-button a img {
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -126,26 +158,29 @@
       transition: transform 0.3s ease-in-out;
     }
 
-    .social-fixed a:hover img,
-    .mod-button a:hover img {
+    .social-fixed a:hover img, .mod-button a:hover img {
       transform: scale(1.2);
     }
   </style>
 </head>
 <body>
-  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="header-image" />
-  <img src="https://projectpokemon.org/images/normal-sprite/ho-oh.gif" alt="Ho-Oh volant" class="hooh-image" />
+  <!-- Image Pokédex animée -->
+  <img src="https://i.ibb.co/r2n3FQVs/Base.png" alt="Pokédex animé" class="animated-header" />
 
+  <!-- Ho-Oh volant + traînée -->
+  <img src="https://projectpokemon.org/images/normal-sprite/ho-oh.gif" alt="Ho-Oh volant" class="hooh-image" />
+  <div class="hooh-trail"></div>
+
+  <!-- Bouton central -->
   <div class="btn-container">
-    <a href="https://tflockers.github.io/pokedexLive/main.html" class="btn-pokedex">
-      Accéder au Pokédex
-    </a>
+    <a href="https://tflockers.github.io/pokedexLive/main.html" class="btn-pokedex">Accéder au Pokédex</a>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
   </div>
 
+  <!-- Réseaux sociaux & plateformes modding -->
   <div class="social-fixed">
     <div class="mod-button">
       <a href="https://videogamemods.com/xenoverse/modder/theflockers/" target="_blank">
@@ -166,8 +201,7 @@
     <div class="social-row">
       <a href="https://www.twitch.tv/theflockers_" target="_blank">
         <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch" />
-      </a>
-      <a href="https://discord.gg/Jc8yNHwhrc" target="_blank">
+      </a> <a href="https://discord.gg/Jc8yNHwhrc" target="_blank">
         <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord" />
       </a>
     </div>
