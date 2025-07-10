@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portail Pokémon - The Flockers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -23,7 +23,6 @@
       position: relative;
     }
 
-    /* IMAGE EN HAUT */
     .header-image {
       position: absolute;
       top: 20px;
@@ -32,13 +31,27 @@
       z-index: 3;
     }
 
-    /* BOUTON CENTRAL */
-    .btn-container {
-  position: relative;
-  display: inline-block;
-  margin-top: 100px; /* anciennement 220px */
+    .hooh-image {
+  position: absolute;
+  top: 220px; /* Anciennement 130px */
+  width: 140px;
+  height: auto;
+  animation: hoohFly 20s linear infinite;
   z-index: 2;
 }
+
+
+@keyframes hoohFly {
+  0% { left: 100%; }
+  100% { left: -140px; }
+}
+
+    .btn-container {
+      position: relative;
+      display: inline-block;
+      margin-top: 160px;
+      z-index: 2;
+    }
 
     .btn-pokedex {
       padding: 15px 30px;
@@ -61,7 +74,6 @@
       100% { box-shadow: 0 0 30px rgba(173, 216, 230, 0.5); }
     }
 
-    /* SCINTILLEMENTS */
     .sparkle {
       position: absolute;
       width: 6px;
@@ -84,15 +96,19 @@
       100% { transform: scale(1); opacity: 0.8; }
     }
 
-    /* RESEAUX FIXES EN BAS À GAUCHE */
     .social-fixed {
       position: fixed;
       bottom: 20px;
       left: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       z-index: 5;
+    }
+
+    .social-row, .mod-button {
+      display: flex;
+      gap: 12px;
     }
 
     .social-fixed a {
@@ -100,25 +116,26 @@
       border-radius: 50%;
     }
 
-    .social-fixed a img {
-      width: 32px;
-      height: 32px;
+    .social-fixed a img,
+    .mod-button a img {
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      animation: glowPulse 2s infinite ease-in-out;
       box-shadow: 0 0 12px rgba(173, 216, 230, 0.6);
+      animation: glowPulse 2s infinite ease-in-out;
       transition: transform 0.3s ease-in-out;
     }
 
-    .social-fixed a:hover img {
+    .social-fixed a:hover img,
+    .mod-button a:hover img {
       transform: scale(1.2);
     }
   </style>
 </head>
 <body>
-  <!-- IMAGE EN HAUT -->
-  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="header-image">
+  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="header-image" />
+  <img src="https://projectpokemon.org/images/normal-sprite/ho-oh.gif" alt="Ho-Oh volant" class="hooh-image" />
 
-  <!-- BOUTON PRINCIPAL -->
   <div class="btn-container">
     <a href="https://tflockers.github.io/pokedexLive/main.html" class="btn-pokedex">
       Accéder au Pokédex
@@ -129,20 +146,31 @@
     <div class="sparkle"></div>
   </div>
 
-  <!-- LIENS RESEAUX -->
   <div class="social-fixed">
-    <a href="https://www.tiktok.com/@_the_flockers_" target="_blank">
-      <img src="https://i.ibb.co/7x9GJqNw/TikTok.png" alt="TikTok">
-    </a>
-    <a href="https://discord.gg/Jc8yNHwhrc" target="_blank">
-      <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord">
-    </a>
-    <a href="https://www.youtube.com/@TheFlockers" target="_blank">
-      <img src="https://i.ibb.co/RTcnmNrW/Youtube.png" alt="YouTube">
-    </a>
-    <a href="https://www.twitch.tv/theflockers_" target="_blank">
-      <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch">
-    </a>
+    <div class="mod-button">
+      <a href="https://videogamemods.com/xenoverse/modder/theflockers/" target="_blank">
+        <img src="https://i.ibb.co/WWNfprXY/VGM.png" alt="VGM" />
+      </a>
+      <a href="https://gamebanana.com/members/2157838" target="_blank">
+        <img src="https://i.ibb.co/4wFS6377/Gamebanana.png" alt="GameBanana" />
+      </a>
+    </div>
+    <div class="social-row">
+      <a href="https://www.youtube.com/@TheFlockers" target="_blank">
+        <img src="https://i.ibb.co/RTcnmNrW/Youtube.png" alt="YouTube" />
+      </a>
+      <a href="https://www.tiktok.com/@_the_flockers_" target="_blank">
+        <img src="https://i.ibb.co/7x9GJqNw/TikTok.png" alt="TikTok" />
+      </a>
+    </div>
+    <div class="social-row">
+      <a href="https://www.twitch.tv/theflockers_" target="_blank">
+        <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch" />
+      </a>
+      <a href="https://discord.gg/Jc8yNHwhrc" target="_blank">
+        <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord" />
+      </a>
+    </div>
   </div>
 </body>
 </html>
