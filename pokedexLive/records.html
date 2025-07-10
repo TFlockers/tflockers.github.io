@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Capture Tracker</title>
+    <title>StreamDex > History</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -216,9 +216,17 @@
                         <a class="dropdown-item" href="./pokestats.html">Classements</a>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="./availablepokemon.html">Pokédex Infos</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="statsDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Infos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="statsDropdown">
+                        <a class="dropdown-item" href="./availablepokemon.html">Pokédex</a>
+                        <a class="dropdown-item" href="./balldex.html">BallDex</a>
+                        <a class="dropdown-item" href="./zonedex.html">ZoneDex</a>
+                        <a class="dropdown-item" href="./pokestats.html">Classements</a>
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -310,7 +318,7 @@
     <!-- Compteur -->
     <span id="rowCount" style="margin-left: 10px; font-size: 16px;">0 résultat(s)</span>
   </div>
-    <p>2025-07-09_16-28-55.</p>
+    <p>2025-07-10_15-40-40.</p>
     <table class="table table-dark table-bordered table-striped">
         <thead class="thead-light">
             <tr>
@@ -324,6 +332,14 @@
         </thead>
         <tbody id="recordsTable">
 
+<tr>
+                <td class="pokename"> Grotadmorv</td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Muk_normal.gif" alt="Sprite"></td>
+                <td>normal</td>
+                <td>Raid (5 users)</td>
+                <td>10/07/2025 15:40:40</td>
+                <td class="d-none">common ; commun ; poison ; poison ; Kanto</td>
+            </tr>
 <tr>
                 <td class="pokename"> Mega Diancie</td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Diancie_shiny.gif" alt="Sprite"></td>
