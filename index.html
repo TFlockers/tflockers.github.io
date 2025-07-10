@@ -1,347 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Accueil Pokédex</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portail Pokémon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --grass-height: 22vh;
-    }
-
-    body {
+    html, body {
       margin: 0;
-      background: linear-gradient(135deg, #001f3f, #87cefa);
-      font-family: 'Press Start 2P', cursive;
+      padding: 0;
+      height: 100%;
       overflow: hidden;
     }
 
-    .logo {
-      position: absolute;
-      top: 2vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40vw;
-      max-width: 400px;
-      z-index: 3;
-    }
-
-    .panel {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255, 255, 255, 0.1);
-      padding: 4vh 5vw;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      z-index: 3;
-    }
-
-    .button {
-      padding: 1em 2em;
-      font-size: 0.8rem;
-      color: white;
-      background: linear-gradient(145deg, #5dade2, #3498db);
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .social-link {
-      position: absolute;
-      top: 2vh;
-      left: 2vw;
+    body {
+      background: url('https://i.ibb.co/7xhztnP6/brume.jpg') no-repeat center center;
+      background-size: cover;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      z-index: 4;
-    }
-
-    .social-item {
-      display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      color: white;
-      font-size: 0.6rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      justify-content: center;
     }
 
-    .social-item img {
-      width: 24px;
-      height: 24px;
-    }
-
-    .music-toggle {
+    .header-image {
       position: absolute;
-      top: 2vh;
-      right: 2vw;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 0.6rem;
-      cursor: pointer;
-      padding: 10px 20px;
-      z-index: 4;
-    }
-
-    .mountain-bg {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      top: 20px;
+      width: 300px;
       height: auto;
-      opacity: 0.4;
-      z-index: -1;
-      object-fit: cover;
     }
 
-    .grass-layer-behind {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 10vh;
-      background-image: url("https://i.ibb.co/DHx0YMb8/Herbe-Fond.png");
-      background-repeat: repeat-x;
-      background-size: cover;
-      background-position: bottom;
-      z-index: 0;
-      pointer-events: none;
+    .btn-container {
+      position: relative;
+      display: inline-block;
+      margin-top: 150px;
     }
 
-    .simularbre {
-  position: absolute;
-  bottom: 0;
-  right: 3vw;
-  height: 40vh;
-  z-index: 5; /* derrière l’herbe */
-  image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;
-}
+    .btn-pokedex {
+      padding: 15px 30px;
+      font-size: 0.8em;
+      font-family: 'Press Start 2P', monospace;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      background: linear-gradient(135deg, #3b4cca, #add8e6);
+      border-radius: 12px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 20px rgba(173, 216, 230, 0.9);
+      transition: transform 0.2s ease-in-out;
+      animation: glowPulse 2s infinite ease-in-out;
+      position: relative;
+      z-index: 2;
+    }
 
-    .lugia {
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 30px rgba(173, 216, 230, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(173, 216, 230, 0.9); }
+      100% { box-shadow: 0 0 30px rgba(173, 216, 230, 0.5); }
+    }
+
+    .sparkle {
       position: absolute;
-      top: -20px;
-      right: -500px;
-      height: 30vh;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px white;
+      animation: sparkleMove 1.5s infinite ease-in-out;
       opacity: 0.8;
-      z-index: 1;
-      animation: flyLugia 20s linear infinite;
-      image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;
     }
 
-    @keyframes flyLugia {
-      0%   { transform: translateX(0); opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { transform: translateX(-140vw); opacity: 0; }
+    .sparkle:nth-child(2) { top: -12px; left: 25%; animation-delay: 0s; }
+    .sparkle:nth-child(3) { bottom: -12px; right: 30%; animation-delay: 0.5s; }
+    .sparkle:nth-child(4) { top: 50%; left: -12px; animation-delay: 1s; }
+    .sparkle:nth-child(5) { bottom: 50%; right: -12px; animation-delay: 1.2s; }
+
+    @keyframes sparkleMove {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.5) translateY(-3px); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
     }
-
-    #pikachu-container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 220px;
-      z-index: 1;
-    }
-
-    .pikachu-wrapper {
-      position: absolute;
-      bottom: 0;
-    }
-
-    .pikachu {
-  position: absolute;
-  bottom: 6vh;
-  height: 30vh;
-  z-index: 5; /* derrière l’herbe */
-  animation: pikachuJumpIn 0.4s ease-out;
-  image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;
-}
-
-    @keyframes pikachuJumpIn {
-      0%   { transform: translateY(100%) scale(1); opacity: 0; }
-      50%  { transform: translateY(-15px) scale(1.02); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 1; }
-    }
-
-    @keyframes pikachuJumpOut {
-      0%   { transform: translateY(0) scale(1); opacity: 1; }
-      50%  { transform: translateY(10px) scale(0.98); opacity: 1; }
-      100% { transform: translateY(100%) scale(0.9); opacity: 0; }
-    }
-
-    @media (max-width: 768px) {
-      .logo { width: 60vw; }
-      .button { font-size: 0.6rem; padding: 0.8em 1.5em; }
-      .simularbre { height: 20vh; }
-      .pikachu { height: 18vh; }
-      .lugia { height: 25vh; }
-    }
-
-    .grass-foreground {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 30vh;
-  aspect-ratio: 100 / 20; /* largeur / hauteur pour garder les proportions */
-  background-image: url("https://i.ibb.co/bjcG8skZ/Grass.png");
-  background-repeat: repeat-x;
-  background-size: contain; /* affiche l’image entière sans la couper */
-  background-position: bottom;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.social-item:hover {
-  background: linear-gradient(145deg, #3498db, #5dade2);
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #5dade2;
-  color: white;
-}
-
-.button:hover {
-  background: linear-gradient(145deg, #6eb9f0, #2980b9);
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
-}
-
-.social-item,
-.button {
-  transition: all 0.3s ease;
-}
-
   </style>
 </head>
-<body onload="startMusic()">
-
-  <!-- Liens sociaux -->
-  <div class="social-link">
-  <a href="https://discord.gg/Jc8yNHwhrc" class="social-item" target="_blank">
-    <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord"><span>Discord</span>
-  </a>
-  <a href="https://www.youtube.com/@TheFlockers" class="social-item" target="_blank">
-    <img src="https://i.ibb.co/RTcnmNrW/Youtube.png" alt="YouTube"><span>YouTube</span>
-  </a>
-  <a href="https://www.tiktok.com/@_the_flockers_" class="social-item" target="_blank">
-    <img src="https://i.ibb.co/7x9GJqNw/TikTok.png" alt="TikTok"><span>TikTok</span>
-  </a>
-  <a href="https://www.twitch.tv/theflockers_" class="social-item" target="_blank">
-    <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch"><span>Twitch</span>
-  </a>
-  <a href="https://gamebanana.com/members/2157838" class="social-item" target="_blank">
-    <img src="https://i.ibb.co/4wFS6377/Gamebanana.png" alt="Gamebanana"><span>Gamebanana</span>
-  </a>
-  <a href="https://videogamemods.com/xenoverse/modder/theflockers/" class="social-item" target="_blank">
-    <img src="https://i.ibb.co/WWNfprXY/VGM.png" alt="VGM"><span>VGM</span>
-  </a>
-</div>
-
-
-  <!-- Logo -->
-  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="logo" />
-
-  <!-- Montagnes -->
-  <img src="https://images.unsplash.com/photo-1525784451128-d1488f52f03e?fm=jpg&q=60&w=3000" alt="Montagnes" class="mountain-bg" />
-
-  <!-- Herbe derrière les Pokémon -->
-  <div class="grass-layer-behind"></div>
-
-  <!-- Lugia -->
-  <img src="https://projectpokemon.org/images/normal-sprite/lugia.gif" alt="Lugia" class="lugia" />
-
-  <!-- Panneau central -->
-  <div class="panel">
-    <a href="pokedexLive/main.html" class="button" onclick="document.getElementById('clickSound').play()">Accéder au Pokédex</a>
+<body>
+  <img src="https://i.ibb.co/WW7kv2Fp/POKEDEX-DE-STREAM.png" alt="Logo Pokédex" class="header-image">
+  <div class="btn-container">
+    <a href="https://tflockers.github.io/pokedexLive/main.html" class="btn-pokedex">
+      Accéder au Pokédex
+    </a>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
   </div>
-
-  <!-- Bouton musique -->
-  <button class="music-toggle" onclick="toggleMusic()">🎵 Musique ON/OFF</button>
-
-  <!-- Simularbre -->
-  <img src="https://projectpokemon.org/images/normal-sprite/sudowoodo.gif" alt="Simularbre" class="simularbre" />
-  
-
-  <!-- Pikachu -->
-  <div id="pikachu-container"></div>
-
-  <!-- Audio -->
-  <audio id="bgMusic" src="http://dl.dropboxusercontent.com/scl/fi/c3d8xtllxh8xz123g50l2/Lugia-s-Song-Pok-mon-2000-EPIC-VERSION-extended.mp3" autoplay loop></audio>
-  <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
-
-  <!-- Script -->
-  <script>
-    const bgMusic = document.getElementById('bgMusic');
-
-    function startMusic() {
-      bgMusic.volume = 0.5;
-      bgMusic.play().catch(() => {});
-    }
-
-    function toggleMusic() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-      } else {
-        bgMusic.pause();
-      }
-    }
-
-    function spawnPikachuOnce() {
-      const container = document.getElementById("pikachu-container");
-
-      // Ne pas faire apparaître un nouveau Pikachu s’il y en a déjà un
-      if (container.querySelector(".pikachu-wrapper")) return;
-
-      const wrapper = document.createElement("div");
-      wrapper.className = "pikachu-wrapper";
-
-      const img = document.createElement("img");
-      img.src = "https://projectpokemon.org/images/normal-sprite/pikachu-kantocap.gif";
-      img.alt = "Pikachu";
-      img.className = "pikachu";
-
-      wrapper.appendChild(img);
-
-      // Position horizontale aléatoire
-      const screenWidth = window.innerWidth;
-      const pikachuWidth = screenWidth * 0.12; // 12vw approx
-      const maxX = screenWidth - pikachuWidth;
-      const posX = Math.random() * maxX;
-      wrapper.style.left = `${posX}px`;
-
-      container.appendChild(wrapper);
-
-      // Disparition animée
-      setTimeout(() => {
-        img.style.animation = "pikachuJumpOut 0.4s ease-in forwards";
-        setTimeout(() => wrapper.remove(), 600);
-      }, 2000 + Math.random() * 2000);
-    }
-
-    // Apparition automatique de Pikachu toutes les 3 à 6 secondes
-    setInterval(() => {
-      spawnPikachuOnce();
-    }, 3000 + Math.random() * 3000);
-  </script>
-
-  <div class="grass-foreground"></div>
-
 </body>
 </html>
