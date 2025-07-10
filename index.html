@@ -23,25 +23,16 @@
       position: relative;
     }
 
-    /* IMAGE ANIMÉE EN HAUT */
-    .animated-header {
+    /* IMAGE DU HAUT (GIF Pokedex2) */
+    .header-image {
       position: absolute;
       top: 20px;
       width: 400px;
       height: auto;
       z-index: 3;
-      animation: pokedexCycle 8s linear infinite;
     }
 
-    @keyframes pokedexCycle {
-      0%   { content: url('https://i.ibb.co/r2n3FQVs/Base.png'); }
-      25%  { content: url('https://i.ibb.co/SwBJk7Qf/Base1.png'); }
-      50%  { content: url('https://i.ibb.co/DfFpynP2/Base2.png'); }
-      75%  { content: url('https://i.ibb.co/YH45CSL/Base3.png'); }
-      100% { content: url('https://i.ibb.co/r2n3FQVs/Base.png'); }
-    }
-
-    /* HO-OH + TRAÎNÉE LUMINEUSE */
+    /* HO-OH VOLANT + TRAÎNÉE */
     .hooh-image {
       position: absolute;
       top: 250px;
@@ -76,7 +67,7 @@
       100% { left: -200px; opacity: 0.2; }
     }
 
-    /* BOUTON PRINCIPAL */
+    /* BOUTON CENTRAL */
     .btn-container {
       position: relative;
       display: inline-block;
@@ -128,7 +119,7 @@
       100% { transform: scale(1); opacity: 0.8; }
     }
 
-    /* LIENS SOCIAUX & MODDING */
+    /* LIENS FIXES EN BAS À GAUCHE */
     .social-fixed {
       position: fixed;
       bottom: 20px;
@@ -164,14 +155,14 @@
   </style>
 </head>
 <body>
-  <!-- Image Pokédex animée -->
-  <img src="https://i.ibb.co/r2n3FQVs/Base.png" alt="Pokédex animé" class="animated-header" />
+  <!-- IMAGE DU HAUT -->
+  <img src="https://i.ibb.co/sdtJxfrq/Pokedex2.gif" alt="Pokédex animé" class="header-image" />
 
-  <!-- Ho-Oh volant + traînée -->
+  <!-- HO-OH + TRAÎNÉE -->
   <img src="https://projectpokemon.org/images/normal-sprite/ho-oh.gif" alt="Ho-Oh volant" class="hooh-image" />
   <div class="hooh-trail"></div>
 
-  <!-- Bouton central -->
+  <!-- BOUTON CENTRAL -->
   <div class="btn-container">
     <a href="https://tflockers.github.io/pokedexLive/main.html" class="btn-pokedex">Accéder au Pokédex</a>
     <div class="sparkle"></div>
@@ -180,7 +171,7 @@
     <div class="sparkle"></div>
   </div>
 
-  <!-- Réseaux sociaux & plateformes modding -->
+  <!-- LIENS RÉSEAUX -->
   <div class="social-fixed">
     <div class="mod-button">
       <a href="https://videogamemods.com/xenoverse/modder/theflockers/" target="_blank">
@@ -201,7 +192,8 @@
     <div class="social-row">
       <a href="https://www.twitch.tv/theflockers_" target="_blank">
         <img src="https://i.ibb.co/5grfgF4K/Twitch.png" alt="Twitch" />
-      </a> <a href="https://discord.gg/Jc8yNHwhrc" target="_blank">
+      </a>
+      <a href="https://discord.gg/Jc8yNHwhrc" target="_blank">
         <img src="https://i.ibb.co/d154RHM/didi.png" alt="Discord" />
       </a>
     </div>
