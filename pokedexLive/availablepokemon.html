@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Capture Tracker</title>
+    <title>StreamDex > GlobalDex</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -216,9 +216,17 @@
                         <a class="dropdown-item" href="./pokestats.html">Classements</a>
                     </div>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="./availablepokemon.html">Pokédex Infos</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="statsDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Infos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="statsDropdown">
+                        <a class="dropdown-item" href="./availablepokemon.html">Pokédex</a>
+                        <a class="dropdown-item" href="./balldex.html">BallDex</a>
+                        <a class="dropdown-item" href="./zonedex.html">ZoneDex</a>
+                        <a class="dropdown-item" href="./pokestats.html">Classements</a>
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -339,7 +347,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Venusaur_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">epic ; epique ; grass ; plante ; poison ; poison ; Mega</td>
             </tr>
@@ -387,7 +395,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Charizard X_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">epic ; epique ; fire ; feu ; dragon ; dragon ; Mega</td>
             </tr>
@@ -399,7 +407,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Charizard Y_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">epic ; epique ; fire ; feu ; flying ; vol ; Kanto</td>
             </tr>
@@ -447,7 +455,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Blastoise_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">epic ; epique ; water ; eau ; Kanto</td>
             </tr>
@@ -2151,7 +2159,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mew_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; légendaire legendaire legendary ; psychic ; psy ; Kanto</td>
             </tr>
@@ -2691,7 +2699,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Espeon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; psychic ; psy ; Johto</td>
             </tr>
@@ -2703,7 +2711,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Umbreon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dark ; ténèbre ; Johto</td>
             </tr>
@@ -4510,8 +4518,8 @@
 
 <tr>
                 <td style="font-size: 1.2em;"><a href="./Creature/Armaldo.html">Armaldo</a> <img src=https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/rarity/common.png style='width:64px; height:16px;'></td>
-                <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Armaldo_normal.gif" alt="Normal Sprite"></td>
-                <td class="count">0</td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Armaldo_normal.gif" alt="Normal Sprite"></td>
+                <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Armaldo_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="FullAvailable">Dispo : fully available</td>
@@ -5979,7 +5987,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Leafeon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; grass ; plante ; Sinnoh</td>
             </tr>
@@ -6027,7 +6035,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Porygon-Z_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; normal ; normal ; Sinnoh</td>
             </tr>
@@ -6515,7 +6523,7 @@
 <tr>
                 <td style="font-size: 1.2em;"><a href="./Creature/Flotajou.html">Flotajou</a> <img src=https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/rarity/common.png style='width:64px; height:16px;'></td>
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Panpour_normal.gif" alt="Normal Sprite"></td>
-                <td class="count">1</td>
+                <td class="count">2</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Panpour_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="FullAvailable">Dispo : fully available</td>
@@ -7107,7 +7115,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tirtouga_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/Grotte Parsemille (Unys).html">Grotte Parsemille (Unys)</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; water ; eau ; rock ; roche ; Unys</td>
             </tr>
@@ -7119,7 +7127,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Carracosta_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/Grotte Parsemille (Unys).html">Grotte Parsemille (Unys)</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; water ; eau ; rock ; roche ; Unys</td>
             </tr>
@@ -7131,7 +7139,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Archen_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/Grotte Parsemille (Unys).html">Grotte Parsemille (Unys)</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; rock ; roche ; flying ; vol ; Unys</td>
             </tr>
@@ -7143,7 +7151,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Archeops_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/Grotte Parsemille (Unys).html">Grotte Parsemille (Unys)</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; rock ; roche ; flying ; vol ; Unys</td>
             </tr>
@@ -8410,8 +8418,8 @@
 
 <tr>
                 <td style="font-size: 1.2em;"><a href="./Creature/Chevroum.html">Chevroum</a> <img src=https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/rarity/common.png style='width:64px; height:16px;'></td>
-                <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gogoat_normal.gif" alt="Normal Sprite"></td>
-                <td class="count">0</td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gogoat_normal.gif" alt="Normal Sprite"></td>
+                <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gogoat_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="FullAvailable">Dispo : fully available</td>
@@ -8691,7 +8699,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tyrunt_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; rock ; roche ; dragon ; dragon ; Kalos</td>
             </tr>
@@ -8703,7 +8711,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Tyrantrum_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; rock ; roche ; dragon ; dragon ; Kalos</td>
             </tr>
@@ -8715,7 +8723,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Amaura_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; rock ; roche ; ice ; glace ; Kalos</td>
             </tr>
@@ -8727,7 +8735,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Aurorus_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">rare ; rock ; roche ; ice ; glace ; Kalos</td>
             </tr>
@@ -8739,7 +8747,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Sylveon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; fairy ; fée ; Kalos</td>
             </tr>
@@ -9166,8 +9174,8 @@
 
 <tr>
                 <td style="font-size: 1.2em;"><a href="./Creature/Argouste.html">Argouste</a> <img src=https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/rarity/common.png style='width:64px; height:16px;'></td>
-                <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gumshoos_normal.gif" alt="Normal Sprite"></td>
-                <td class="count">0</td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gumshoos_normal.gif" alt="Normal Sprite"></td>
+                <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gumshoos_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="FullAvailable">Dispo : fully available</td>
@@ -10296,8 +10304,8 @@
                 <td style="font-size: 1.2em;"><a href="./Creature/Ouistempo.html">Ouistempo</a> <img src=https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/rarity/common.png style='width:64px; height:16px;'></td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Grookey_normal.gif" alt="Normal Sprite"></td>
                 <td class="count">0</td>
-                <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Grookey_shiny.gif" alt="Shiny Sprite"></td>
-                <td class="count">0</td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Grookey_shiny.gif" alt="Shiny Sprite"></td>
+                <td class="count">1</td>
                 <td class="FullAvailable">Dispo : fully available</td>
                 <td><a href="./Zone/_void_.html">void</a></td>
                 <td>/</td>
@@ -11962,8 +11970,8 @@
 
 <tr>
                 <td style="font-size: 1.2em;"><a href="./Creature/Crocogril.html">Crocogril</a> <img src=https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/rarity/common.png style='width:64px; height:16px;'></td>
-                <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Crocalor_normal.gif" alt="Normal Sprite"></td>
-                <td class="count">0</td>
+                <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Crocalor_normal.gif" alt="Normal Sprite"></td>
+                <td class="count">1</td>
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Crocalor_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="FullAvailable">Dispo : fully available</td>
@@ -13035,7 +13043,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gimmighoul (Chest Form)_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">1</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; ghost ; spectre ; Paldea</td>
             </tr>
@@ -13047,7 +13055,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gimmighoul (Roaming Form)_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; ghost ; spectre ; Paldea</td>
             </tr>
@@ -13059,7 +13067,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Gholdengo_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; steel ; acier ; ghost ; spectre ; Paldea</td>
             </tr>
@@ -13479,7 +13487,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Primal Kyogre_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; water ; eau ; Mega</td>
             </tr>
@@ -13491,7 +13499,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Primal Groudon_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; ground ; sol ; fire ; feu ; Mega</td>
             </tr>
@@ -13503,7 +13511,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Tyranitar_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; rock ; roche ; dark ; ténèbre ; Mega</td>
             </tr>
@@ -13515,7 +13523,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Sableye_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dark ; ténèbre ; ghost ; spectre ; Mega</td>
             </tr>
@@ -13527,7 +13535,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Steelix_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; steel ; acier ; ground ; sol ; Mega</td>
             </tr>
@@ -13539,7 +13547,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Sharpedo_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; water ; eau ; dark ; ténèbre ; Mega</td>
             </tr>
@@ -13551,7 +13559,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Heracross_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; bug ; bug ; fighting ; combat ; Mega</td>
             </tr>
@@ -13563,7 +13571,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Pinsir_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; bug ; bug ; flying ; vol ; Mega</td>
             </tr>
@@ -13575,7 +13583,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Pidgeot_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; normal ; normal ; flying ; vol ; Mega</td>
             </tr>
@@ -13587,7 +13595,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Rayquaza_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dragon ; dragon ; flying ; vol ; Mega</td>
             </tr>
@@ -13599,7 +13607,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Aerodactyl_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; rock ; roche ; flying ; vol ; Mega</td>
             </tr>
@@ -13611,7 +13619,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Ampharos_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; electric ; elektrik ; dragon ; dragon ; Mega</td>
             </tr>
@@ -13623,7 +13631,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Glalie_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; ice ; glace ; Mega</td>
             </tr>
@@ -13635,7 +13643,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Audino_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; normal ; normal ; fairy ; fée ; Mega</td>
             </tr>
@@ -13647,7 +13655,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Mawile_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; steel ; acier ; fairy ; fée ; Mega</td>
             </tr>
@@ -13659,7 +13667,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Mewtwo Y_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; psychic ; psy ; Mega</td>
             </tr>
@@ -13671,7 +13679,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Mewtwo X_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">3</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; psychic ; psy ; fighting ; combat ; Mega</td>
             </tr>
@@ -13683,7 +13691,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Metagross_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; steel ; acier ; psychic ; psy ; Mega</td>
             </tr>
@@ -13695,7 +13703,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Lucario_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; fighting ; combat ; steel ; acier ; Mega</td>
             </tr>
@@ -13707,7 +13715,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Lopunny_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; normal ; normal ; fighting ; combat ; Mega</td>
             </tr>
@@ -13719,7 +13727,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Gyarados_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; water ; eau ; dark ; ténèbre ; Mega</td>
             </tr>
@@ -13731,7 +13739,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Latios_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dragon ; dragon ; psychic ; psy ; Mega</td>
             </tr>
@@ -13743,7 +13751,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Latias_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dragon ; dragon ; psychic ; psy ; Mega</td>
             </tr>
@@ -13755,7 +13763,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Swampert_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; water ; eau ; ground ; sol ; Mega</td>
             </tr>
@@ -13767,7 +13775,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Kangaskhan_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; normal ; normal ; Mega</td>
             </tr>
@@ -13779,7 +13787,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Sceptile_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; grass ; plante ; dragon ; dragon ; Mega</td>
             </tr>
@@ -13791,7 +13799,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Gardevoir_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; psychic ; psy ; fairy ; fée ; Mega</td>
             </tr>
@@ -13803,7 +13811,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Gallade_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; psychic ; psy ; fighting ; combat ; Mega</td>
             </tr>
@@ -13815,7 +13823,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Aggron_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; steel ; acier ; Mega</td>
             </tr>
@@ -13827,7 +13835,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Slowbro_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; water ; eau ; psychic ; psy ; Mega</td>
             </tr>
@@ -13839,7 +13847,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Manectric_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; electric ; elektrik ; Mega</td>
             </tr>
@@ -13851,7 +13859,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Gengar_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; ghost ; spectre ; poison ; poison ; Mega</td>
             </tr>
@@ -13863,7 +13871,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Salamence_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dragon ; dragon ; flying ; vol ; Mega</td>
             </tr>
@@ -13875,7 +13883,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Houndoom_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dark ; ténèbre ; fire ; feu ; Mega</td>
             </tr>
@@ -13887,7 +13895,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Beedrill_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; bug ; bug ; poison ; poison ; Mega</td>
             </tr>
@@ -13899,7 +13907,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Scizor_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; bug ; bug ; steel ; acier ; Mega</td>
             </tr>
@@ -13911,7 +13919,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Medicham_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; fighting ; combat ; psychic ; psy ; Mega</td>
             </tr>
@@ -13923,7 +13931,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Garchomp_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dragon ; dragon ; ground ; sol ; Mega</td>
             </tr>
@@ -13935,7 +13943,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Camerupt_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; fire ; feu ; ground ; sol ; Mega</td>
             </tr>
@@ -13947,7 +13955,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Blaziken_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; fire ; feu ; fighting ; combat ; Mega</td>
             </tr>
@@ -13959,7 +13967,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Banette_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; ghost ; spectre ; Mega</td>
             </tr>
@@ -13971,7 +13979,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Abomasnow_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; grass ; plante ; ice ; glace ; Mega</td>
             </tr>
@@ -13983,7 +13991,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Altaria_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dragon ; dragon ; fairy ; fée ; Mega</td>
             </tr>
@@ -13995,7 +14003,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Alakazam_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; psychic ; psy ; Mega</td>
             </tr>
@@ -14007,7 +14015,7 @@
                 <td><img class = "all-black" src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Absol_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">0</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; dark ; ténèbre ; Mega</td>
             </tr>
@@ -14019,7 +14027,7 @@
                 <td><img src="https://raw.githubusercontent.com/MythMega/PkServData/refs/heads/master/img/sprite/poke/vanilla/Mega Diancie_shiny.gif" alt="Shiny Sprite"></td>
                 <td class="count">4</td>
                 <td class="AvailableForGiveaway">Dispo : only under distribution / events.</td>
-                <td><a href="./Zone/_void_.html">void</a></td>
+                <td>????????</td>
                 <td>/</td>
                 <td class="d-none">common ; commun ; rock ; roche ; fairy ; fée ; Mega</td>
             </tr>
